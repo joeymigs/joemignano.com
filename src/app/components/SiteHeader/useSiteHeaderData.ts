@@ -7,8 +7,8 @@ export function useSiteHeaderData(): PageData {
   const pathname = usePathname()
 
   return {
-    headerMode: pages[pathname].headerMode || 'light',
-    backButtonUrl: pages[pathname].backButtonUrl,
-    transitionDelay: pages[pathname].transitionDelay ?? 0,
+    headerMode: pages[pathname]?.headerMode || 'light',
+    backButtonUrl: pages[pathname]?.backButtonUrl,
+    transitionDelay: pages[pathname]?.transitionDelay ?? 0,
   }
 }
