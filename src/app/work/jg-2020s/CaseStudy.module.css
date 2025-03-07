@@ -1,0 +1,13 @@
+.Wrap {
+  --hero-bg-color: var(--case-study-bg-jg-2020s);
+  --hero-underline: var(--case-study-underline-jg-2020s);
+  --summary-card-bg-color: var(--case-study-summary-card-bg-jg-2020s);
+  --cta-color: var(--case-study-cta-jg-2020s);
+}
+
+.DevIconOffset {
+  @media( width >= 960px ) {
+    position: absolute;
+    left: 1.5rem;
+  }
+}

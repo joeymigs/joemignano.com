@@ -1,0 +1,13 @@
+/**
+ * Grid Tokens
+ */
+:root {
+  /**
+   * Primitives
+   */
+  --site-grid-cols: 4;
+
+  @media( width >= 768px ) {
+    --site-grid-cols: 12;
+  }
+}

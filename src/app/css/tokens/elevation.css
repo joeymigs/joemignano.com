@@ -1,0 +1,36 @@
+/**
+ * Grid Tokens
+ */
+ :root {
+  /**
+   * Primitives
+   */
+  --elevation-50:  0px 0.75px 1.5px 0px rgba(46, 48, 50, 0.02),
+                   0px 1.5px 3px 0px rgba(46, 48, 50, 0.04),
+                   0px 3px 6px 0px rgba(46, 48, 50, 0.08),
+                   0px 6px 12px 0px rgba(46, 48, 50, 0.12);
+  --elevation-100: 0px 1px 2px 0px rgba(46, 48, 50, 0.02),
+                   0px 2px 4px 0px rgba(46, 48, 50, 0.04),
+                   0px 4px 8px 0px rgba(46, 48, 50, 0.08),
+                   0px 8px 16px 0px rgba(46, 48, 50, 0.12);
+  --elevation-200: 0px 1px 2px 0px rgba(46, 48, 50, 0.01),
+                   0px 2px 4px 0px rgba(46, 48, 50, 0.02),
+                   0px 4px 8px 0px rgba(46, 48, 50, 0.04),
+                   0px 8px 16px 0px rgba(46, 48, 50, 0.08),
+                   0px 16px 32px 0px rgba(46, 48, 50, 0.12);
+  --elevation-300: 0px 1px 2px 0px rgba(46, 48, 50, 0.01),
+                   0px 4px 8px 0px rgba(46, 48, 50, 0.02),
+                   0px 8px 16px 0px rgba(46, 48, 50, 0.04),
+                   0px 16px 32px 4px rgba(46, 48, 50, 0.08),
+                   0px 24px 48px 4px rgba(46, 48, 50, 0.12);
+  --elevation-400: 0px 1px 2px 0px rgba(46, 48, 50, 0.01),
+                   0px 2px 4px 0px rgba(46, 48, 50, 0.02),
+                   0px 6px 12px 0px rgba(46, 48, 50, 0.04),
+                   0px 24px 48px 6px rgba(46, 48, 50, 0.08),
+                   0px 32px 64px 6px rgba(46, 48, 50, 0.12);
+  --elevation-500: 0px 1px 4px 0px rgba(46, 48, 50, 0.01),
+                   0px 2px 8px 0px rgba(46, 48, 50, 0.02),
+                   0px 12px 24px 0px rgba(46, 48, 50, 0.04),
+                   0px 32px 64px 8px rgba(46, 48, 50, 0.08),
+                   0px 40px 80px 8px rgba(46, 48, 50, 0.12);
+}

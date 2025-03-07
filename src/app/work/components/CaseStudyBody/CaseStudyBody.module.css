@@ -1,0 +1,71 @@
+@property --case-study-body-bg-color {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+
+.Wrap {
+  --case-study-body-bg-color: var(--surface-bg-primary);
+
+  position: relative;
+
+  padding-top: var(--space-200);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+
+    height: 100dvh;
+    max-height: 800px;
+
+    background: linear-gradient(
+      to bottom,
+      var(--case-study-body-bg-color),
+      var(--surface-bg-primary)
+    );
+
+    transition: --case-study-body-bg-color 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+
+    z-index: -1;
+  }
+
+  &.design { --case-study-body-bg-color: var(--color-blue-50); }
+  &.dev { --case-study-body-bg-color: var(--color-green-50); }
+}
+
+.Features {
+  --_padding-y: var(--space-600) var(--space-1200);
+  --_item-gap: var(--space-1000);
+
+  padding-block: var(--_padding-y);
+
+  & > * + * {
+    margin-block-start: var(--_item-gap);
+  }
+}
+
+@media( 480px <= width < 768px ) {
+  .Features {
+    --_item-gap: var(--space-1200);
+  }
+}
+@media( width >= 960px ) {
+  .Wrap {
+    padding-top: var(--space-300);
+  }
+  .Features {
+    --_item-gap: var(--space-1200);
+  }
+}
+@media( width >= 1080px ) {
+  .Features {
+    --_padding-y: var(--space-1200) var(--space-2000);
+  }
+}
+@media( width >= 1280px ) {
+  .Features {
+    --_padding-y: var(--space-1600) var(--space-2000);
+    --_item-gap: var(--space-1600);
+  }
+}

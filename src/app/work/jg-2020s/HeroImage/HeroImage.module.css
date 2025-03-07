@@ -1,0 +1,87 @@
+.Wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.MobileFrame {
+  margin-inline: auto;
+
+  width: calc(100% - (var(--layout-viewport-padding) * 2));
+}
+
+@media( width < 480px ) {
+  .DesktopWrap {
+    display: none;
+  }
+}
+@media( 480px <= width < 800px ) {
+  .MobileFrame {
+    display: none;
+  }
+}
+@media( width >= 800px ) {
+  .MobileContainer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .MobileWrap {
+    position: absolute;
+    top: 15%;
+    right: 0;
+    width: calc(50% - (var(--layout-viewport-padding) * 2));
+    height: 100%;
+  }
+  .MobileFrame {
+    min-width: 15rem;
+    width: calc(50% - (var(--layout-viewport-padding) * 2));
+  }
+}
+@media( width >= 880px ) {
+  .MobileWrap {
+    top: 25%;
+  }
+  .MobileFrame {
+    min-width: 16rem;
+    width: calc(50% - (var(--layout-viewport-padding) * 2));
+  }
+}
+@media( width >= 960px ) {
+  .MobileWrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .MobileFrame {
+    min-width: 18rem;
+    width: 50%;
+  }
+}
+@media( width >= 1024px ) {
+  .MobileFrame {
+    min-width: 19rem;
+  }
+}
+@media( width >= 1120px ) {
+  .MobileFrame {
+    min-width: min(100%, 20rem);
+  }
+}
+@media( width >= 1328px ) {
+  .MobileFrame {
+    min-width: min(100%, 21rem);
+  }
+}
+@media( width >= 1400px ) {
+  .MobileFrame {
+    min-width: min(100%, 22rem);
+  }
+}
+
+@media( width >= 960px )  { .MobileWrap { top: 17.5%; } }
+@media( width >= 1120px ) { .MobileWrap { top: 20%; } }
+@media( width >= 1200px ) { .MobileWrap { top: 22.5%; } }
+@media( width >= 1280px ) { .MobileWrap { top: 25%; } }
+@media( width >= 1480px ) { .MobileWrap { top: 22.5%; } }

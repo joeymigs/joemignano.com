@@ -1,0 +1,14 @@
+/**
+ * Border Radii Tokens
+ */
+:root {
+  /**
+   * Primitives
+   */
+  --border-radius-s:  var(--4px);
+  --border-radius-m:  var(--8px);
+  --border-radius-ml: var(--12px);
+  --border-radius-l:  var(--16px);
+  --border-radius-xl: var(--24px);
+  --border-radius-xxl: var(--32px);
+}

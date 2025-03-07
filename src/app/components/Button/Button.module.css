@@ -1,0 +1,163 @@
+@property --_bg-opacity-light {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 1;
+}
+@property --_bg-opacity-dark {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 1;
+}
+
+.Button {
+  --_bg-color: var(--button-bg-color, transparent);
+  --_color: var(--color, var(--text-primary));
+  --_gap: var(--gap, var(--space-100));
+
+  --_height: var(--height, var(--space-400));
+  --_padding-y: var(--padding-y, initial);
+  --_padding-x: var(--padding-x, initial);
+
+  --_font-size: var(--font-size, var(--font-size-body-m));
+  --_font-weight: var(--font-weight, var(--font-weight-medium));
+  --_font-width: var(--font-width, var(--font-width-normal));
+  
+  --_border-radius: var(--border-radius, var(--border-radius-m));
+  --_shadow: var(--shadow, none);
+
+  display: flex;
+  align-items: center;
+  gap: var(--_gap);
+
+  background-color: var(--_bg-color);
+  color: var(--_color);
+
+  font-size: var(--_font-size);
+  font-weight: var(--_font-weight);
+  font-stretch: var(--_font-width);
+
+  height: var(--_height);
+
+  padding: var(--_padding-y) var(--_padding-x);
+
+  border-radius: var(--_border-radius);
+  box-shadow: var(--_shadow);
+
+  /* Modifiers */
+  &.stretch {
+    width: 100%;
+    justify-content: center;
+  }
+
+  &.inline {
+    display: inline;
+  }
+
+  /*
+   * Variants
+   */
+  &.regular {
+    --_height: var(--space-500);
+    --_padding-x: var(--space-200);
+    --_padding-y: var(--space-150);
+
+    --_bg-color: var(--color-neutral-100);
+    --_border-radius: var(--border-radius-ml);
+    
+    --_font-size: var(--font-size-body-m);
+    --_font-weight: var(--font-weight-bold);
+    --_font-width: var(--font-width-expanded);
+
+    line-height: var(--line-height-body-m);
+    letter-spacing: var(--letter-spacing--02);
+
+    transition: background-color 0.1s ease, color 0.1s ease;
+
+    .Icon {
+      color: var(--text-disabled);
+    }
+
+    &:hover {
+      --_bg-color: var(--surface-link);
+      --_color: var(--color-neutral-white);
+
+      .Icon {
+        color: inherit;
+      }
+    }
+
+    @media( width >= 960px ) {
+      --_height: var(--space-600);
+      --_padding-x: var(--20px);
+      --_padding-y: var(--space-200);
+      --_border-radius: var(--border-radius-l);
+    }
+  }
+  &.catchy {
+    --_padding-y: var(--space-150);
+    --_padding-x: var(--space-200);
+
+    --_color: var(--text-primary-inverse);
+    --_font-weight: 600;
+
+    --_bg-opacity-light: 0.95;
+    --_bg-opacity-dark: 0.618;
+
+    --_bg-gradient-l: light-dark(
+      hsl(from var(--color-blue-750) h s l / var(--_bg-opacity-light)),
+      color-mix(
+        in srgb,
+        hsl(from var(--color-blue-700) h s l / var(--_bg-opacity-dark)), 
+        hsl(from var(--color-blue-800) h s l / var(--_bg-opacity-dark)) 33%
+      )
+    );
+    --_bg-gradient-r: light-dark(
+      hsl(from var(--color-green-700) h s l / var(--_bg-opacity-light)),
+      color-mix(
+        in srgb,
+        hsl(from var(--color-green-700) h s l / var(--_bg-opacity-dark)),
+        hsl(from var(--color-green-800) h s l / var(--_bg-opacity-dark)) 5%
+      )
+    );
+    --_border-radius: calc(var(--border-radius-m) + 2px);
+    --_outline-color: light-dark(
+      hsl(from var(--surface-bg-primary) h s l / 0.84),
+      hsl(from var(--surface-bg-primary-inverse) h s l / 0.8)
+    );
+
+    background: linear-gradient(
+      90deg,
+      var(--_bg-gradient-l) 0%,
+      var(--_bg-gradient-r) 100%
+    );
+
+    box-shadow: var(--elevation-50);
+
+    &:hover {
+      --_bg-opacity-light: 0.85;
+      --_bg-opacity-dark: 1;
+    }
+
+    &:focus {
+      backdrop-filter: blur(16px);
+      outline: solid 2px var(--_outline-color);
+    }
+
+    transition: --_bg-opacity-light 0.1s ease, --_bg-opacity-dark 0.1s ease;
+  }
+
+  &.cta {
+    --_bg-color: var(--button-bg-color, var(--surface-link));
+    --_color: var(--color-neutral-white);
+    --_border-radius: var(--border-radius-l);
+    --_font-size: var(--font-size-body-l);
+    --_font-weight: var(--font-weight-bold);
+    --_font-width: var(--font-width-expanded);
+    --_height: var(--space-800);
+    --_shadow: 0px 4px 8px 0px rgba(66, 76, 85, 0.16);
+
+    @media( width >= 960px ) {
+      --_height: var(--space-1000);
+    }
+  }
+}

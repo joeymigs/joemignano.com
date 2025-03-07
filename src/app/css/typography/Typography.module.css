@@ -1,0 +1,213 @@
+/**
+ * TYPOGRAPHIC ELEMENTS
+ *  * Styles for headings, display text, body text.
+ */
+/*
+ * Display: Prominent hero text or special headings
+ */
+.DisplayXl {
+  font-size: var(--font-size-display-xl);
+  line-height: var(--line-height-display-xl);
+  font-weight: var(--font-weight-black);
+  font-stretch: var(--font-width-extra-expanded);
+  letter-spacing: var(--letter-spacing--07);
+}
+.DisplayL {
+  font-size: var(--font-size-display-l);
+  line-height: var(--line-height-display-l);
+  font-weight: var(--font-weight-bold);
+  font-stretch: var(--font-width-extra-expanded);
+  letter-spacing: var(--letter-spacing--07);
+}
+.DisplayM {
+  font-size: var(--font-size-display-m);
+  line-height: var(--line-height-display-m);
+  font-weight: var(--font-weight-bold);
+  font-stretch: var(--font-width-expanded);
+  letter-spacing: var(--letter-spacing--025);
+}
+.DisplayS {
+  font-size: var(--font-size-display-s);
+  line-height: var(--line-height-display-s);
+  font-weight: var(--font-weight-bold);
+  font-stretch: var(--font-width-expanded);
+  letter-spacing: var(--letter-spacing--025);
+}
+.DisplayXS {
+  font-size: var(--font-size-display-xs);
+  line-height: var(--line-height-display-xs);
+  font-weight: var(--font-weight-medium);
+  font-stretch: var(--font-width-expanded);
+  letter-spacing: var(--letter-spacing--025);
+}
+
+/*
+ * Headings: Section headings and subheadings
+ */
+.HeadingL {
+  font-size: var(--font-size-heading-l);
+  line-height: var(--line-height-heading-l);
+  font-weight: var(--font-weight-bold);
+  font-stretch: var(--font-width-extra-expanded);
+  letter-spacing: var(--letter-spacing--05);
+}
+.HeadingM {
+  font-size: var(--font-size-heading-m);
+  line-height: var(--line-height-heading-m);
+  font-weight: var(--font-weight-medium);
+  font-stretch: var(--font-width-expanded);
+  letter-spacing: var(--letter-spacing--025);
+}
+.HeadingS {
+  font-size: var(--font-size-heading-s);
+  line-height: var(--line-height-heading-s);
+  font-weight: var(--font-weight-medium);
+  font-stretch: var(--font-width-expanded);
+  letter-spacing: var(--letter-spacing--02);
+}
+
+/*
+ * Body: Paragraph or other body text
+ */
+.BodyL {
+  font-size: var(--font-size-body-l);
+  line-height: var(--line-height-body-l);
+  font-weight: var(--font-weight-light);
+  font-stretch: var(--font-width-normal);
+}
+.BodyM {
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+  font-weight: var(--font-weight-light);
+  font-stretch: var(--font-width-normal);
+}
+.BodyS {
+  font-size: var(--font-size-body-s);
+  line-height: var(--line-height-body-s);
+  font-weight: var(--font-weight-light);
+  font-stretch: var(--font-width-normal);
+}
+.BodyXS {
+  font-size: var(--font-size-body-xs);
+  line-height: var(--line-height-body-xs);
+  font-weight: var(--font-weight-light);
+  font-stretch: var(--font-width-normal);
+}
+
+/** 
+ * TYPOGRAPHY CONTEXT CLASS
+ *  * Wrapper class for applying consistent color, spacing, and other base
+ *    styles to unclassed text-related elements.
+ */
+.Prose {
+  --_color: var(--color, var(--text-primary));
+  --_p-space: var(--p-space, var(--space-300));
+
+  color: var(--_color);
+
+  & > * + * {
+    margin-block-start: var(--_p-space);
+  }
+
+  /* Lists */
+  & :is(ol, ul) {
+    &, & + * {
+      margin-block-start: var(--space-200);
+    }
+    
+    & li {
+      position: relative;
+
+      margin-block-start: var(--space-50);
+      padding-inline-start: var(--space-300);
+    }
+  }
+  & ol {
+		counter-reset: page-section-counter;
+
+    & li::before {
+			content: counter(page-section-counter) ".";
+			counter-increment: page-section-counter;
+			position: absolute;
+			left: 0.375em;
+		}
+	}
+  & ul {
+    & li::before {
+      content:"\2022 ";
+      position: absolute;
+      left: 0.375em;
+
+      font-size: 1.2em;
+      line-height: 1.35;
+    }
+  }
+
+  /* Text links */
+  & a {
+    color: var(--text-link);
+    text-decoration: underline;
+    text-decoration-thickness: 0.05em;
+    text-underline-offset: 0.05em;
+  }
+
+  /* Modifiers */
+  &.Inverse {
+    --_color: var(--color, var(--text-primary-inverse));
+
+    & a {
+      color: var(--text-link-inverse);
+    }
+  }
+}
+
+.Prose a,
+.Hover .Link,
+.Underline {
+  --_underline-color:  var(--underline-color, hsl(from var(--color-green-400) h s l / 0.5));
+  --_underline-height: var(--underline-height, 0.7ex);
+  --_underline-offset: var(--underline-offset, 0em);
+  --_underline-easing: var(--underline-easing, cubic-bezier(.52, .01, .16, 1));
+  --_underline-duration: var(--underline-duration, 0.3s);
+
+  --_baseline-offset: 0.25em; /* adjusting for Archivo */
+  --_underline-position: calc(100% - var(--_baseline-offset) + var(--_underline-offset));
+
+  --_padding-adjust: max(0px, var(--_underline-offset) + var(--_underline-height));
+
+  position: relative;
+  padding-bottom: var(--_padding-adjust);
+  margin-bottom: calc(var(--_padding-adjust) * -1);
+
+  background-image: linear-gradient(to right, var(--_underline-color), var(--_underline-color));
+  background-size: 0% var(--_underline-height);
+  background-position: 100% var(--_underline-position);
+  background-repeat: no-repeat;
+  
+  transition: 
+    background-size var(--_underline-duration) var(--_underline-easing),
+    color 0.15s var(--_underline-easing),
+    text-decoration-color 0.15s var(--_underline-easing);
+}
+
+.Prose a:hover,
+.Hover:hover .Link,
+.Underline:hover {
+  background-size: 100% var(--_underline-height);
+  background-position: 0% var(--_underline-position);
+}
+.Prose a:hover {
+  color: inherit;
+  text-decoration-color: transparent;
+}
+
+/* Utilities */
+.Balance {
+  text-wrap: balance;
+}
+.Pretty {
+  text-wrap: pretty;
+}
+.Clamped {
+  max-width: 60ch; /* 52ch; <-- for AboutHero.Content only??? */
+}

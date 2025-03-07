@@ -1,0 +1,17 @@
+.Wrap {
+  --hero-bg-color: var(--case-study-bg-bookfinder);
+  --hero-underline: var(--case-study-underline-bookfinder);
+  --summary-card-bg-color: var(--case-study-summary-card-bg-bookfinder);
+  --cta-color: var(--case-study-cta-bookfinder);
+}
+
+.Screenshot {
+  box-shadow: var(--elevation-300);
+  border-radius: var(--border-radius-l);
+
+  &.darkShadow {
+    box-shadow: 0px 4px 8px 8px rgba(136, 153, 168, 0.04),
+                0px 8px 16px 8px rgba(136, 153, 168, 0.04),
+                0px 16px 32px 0px rgba(136, 153, 168, 0.04);
+  }
+}

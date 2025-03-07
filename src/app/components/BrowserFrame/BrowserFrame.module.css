@@ -1,0 +1,74 @@
+.Wrap {
+  --_width: var(--width, 100%);
+  width: var(--_width);
+
+  container-type: inline-size;
+}
+.Frame {
+  --_shadow: var(--shadow, var(--elevation-500));
+  
+  --_border-radius: 0.5rem;
+  --_bar-height: clamp(1rem, 2.25cqh + 0.125rem, 1.75rem);
+  --_bar-padding: clamp(0.375rem, 1.125cqh - 0.125rem, 0.75rem);
+  --_button-gap: clamp(0.1875rem, 1.125cqh - 0.425rem, 0.375rem);
+  --_button-size: clamp(0.375rem, 1.125cqh - 0.125rem, 0.625rem);
+
+  width: 100%;
+
+  background-color: var(--surface-bg-secondary);
+  border-radius: var(--_border-radius);
+
+  max-width: 1200px;
+  margin-inline: auto;
+  
+  box-shadow: var(--_shadow);
+  
+  & img {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+  }
+
+  @container (min-width: 45rem) {
+    --_border-radius: 0.625rem;
+    --_bar-height: clamp(1rem, 2.5cqh + 0.125rem, 1.75rem);
+    --_bar-padding: clamp(0.375rem, 1.5cqh - 0.125rem, 0.75rem);
+    --_button-gap: clamp(0.1875rem, 1.333333cqh - 0.475rem, 0.375rem);
+    --_button-size: clamp(0.375rem, 1.5cqh - 0.125rem, 0.625rem);
+  }
+  @container (min-width: 60rem) {
+    --_border-radius: 0.75rem;
+  }
+}
+.Bar {
+  display: flex;
+  align-items: center;
+
+  height: var(--_bar-height);
+  padding-inline: var(--_bar-padding);
+
+  background-color: #f4f4f5;
+  border-bottom: solid 1px #f0f0f0;
+
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+.Buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--_button-gap);
+}
+.Button {
+  height: var(--_button-size);
+  width: var(--_button-size);
+
+  background-color: #e2dede;
+
+  border: solid 1px #dadada;
+  border-radius: 50%;
+}
+
+@media( width >= 1400px ) {
+  .Frame {
+    max-width: 1200px;
+  }
+}

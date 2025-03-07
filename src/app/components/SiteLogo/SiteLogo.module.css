@@ -1,0 +1,16 @@
+.Logo {
+  --logo-height: var(--20px);
+  
+  width: fit-content;
+
+  & svg {
+    height: var(--logo-height);
+    width: fit-content;
+
+    fill: currentColor;
+  }
+
+  @media( width >= 960px ) {
+    --logo-height: var(--24px);
+  }
+}

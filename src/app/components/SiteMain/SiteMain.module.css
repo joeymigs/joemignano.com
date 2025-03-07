@@ -1,0 +1,6 @@
+.Wrap {
+  position: relative;
+  background-color: var(--surface-bg-primary);
+
+  z-index: 1;
+}

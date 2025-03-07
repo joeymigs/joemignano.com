@@ -1,0 +1,36 @@
+.HeroBg {
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: var(--border-radius-xl);
+}
+.Phone {
+  position: absolute;
+  inset: clamp(var(--space-300), 10%, var(--space-1000)) 50% 0;
+  width: clamp(min(18rem, 66.67cqw), 33.3%, 22rem);
+  translate: -50% 0;
+  z-index: 1;
+}
+
+@media( width < 480px ) {
+  .HeroBg {
+    border-radius: 0;
+  }
+}
+@media( width < 768px ) {
+  .HeroBg {
+    height: clamp(480px, 50vh, 640px);
+  }
+}
+@media( 768px <= width < 960px ) {
+  .HeroBg {
+    height: clamp(520px, 50vh, 640px);
+  }
+}
+@media( width >= 960px ) {
+  .HeroBg {
+    max-height: min(82dvh, 640px);
+
+    border-radius: var(--border-radius-xxl);
+  }
+}

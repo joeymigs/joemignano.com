@@ -1,0 +1,12 @@
+.Wrap {
+  position: relative;
+  min-height: 80px;
+  height: 100%;
+}
+
+.Video {
+  object-fit: contain;
+  display: block;
+  width: 100%;
+  height: 100%;
+}

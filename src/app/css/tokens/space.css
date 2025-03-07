@@ -1,0 +1,38 @@
+/**
+ * Space Tokens
+ */
+:root {
+  /*
+   * Primitives
+   */
+   --space-25:   var(--2px);
+   --space-50:   var(--4px);
+   --space-75:   var(--6px);
+   --space-100:  var(--8px);
+   --space-125:  var(--10px);
+   --space-150:  var(--12px);
+   --space-200:  var(--16px);
+   --space-300:  var(--24px);
+   --space-400:  var(--32px);
+   --space-500:  var(--40px);
+   --space-600:  var(--48px);
+   --space-700:  var(--56px);
+   --space-800:  var(--64px);
+   --space-900:  var(--72px);
+   --space-1000: var(--80px);
+   --space-1200: var(--96px);
+   --space-1400: var(--112px);
+   --space-1600: var(--128px);
+   --space-2000: var(--160px);
+   --space-2500: var(--200px);
+   --space-3000: var(--240px);
+
+  /**
+   * Semantic
+   */
+  /* Base */
+  --layout-viewport-padding: var(--space-300);
+  
+  @media( width >= 560px ) { --layout-viewport-padding: var(--space-400); }
+  /* @media( width >= 1080px ) { --layout-viewport-padding: var(--space-500); } */
+}

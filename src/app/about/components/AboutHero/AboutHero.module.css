@@ -1,0 +1,164 @@
+.Wrap {
+  position: relative;
+
+  background-color: var(--surface-bg-primary-inverse);
+  
+  height: max(200dvh, 720px);
+
+  overflow: clip;
+
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+
+    width: 100%;
+    height: var(--space-1600);
+
+    background: linear-gradient(
+      180deg,
+      hsl(from var(--surface-bg-primary-inverse) h s l / 0.8) 0%,
+      hsl(from var(--surface-bg-primary-inverse) h s l / 0) 100%
+    );
+
+    z-index: 1;
+  }
+}
+
+.BG {
+  position: sticky;
+  top: 0;
+  width: 100dvw;
+  height: 100dvh;
+
+  z-index: 0;
+}
+.Overlay {
+  --_base-color: var(--surface-bg-primary-inverse);
+
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  opacity: 0.75;
+  
+  background: linear-gradient(45deg, var(--_base-color) -50%, transparent);
+  
+  z-index: 1;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    
+    background: radial-gradient(
+      100% 100% at 50% 50%,
+      var(--_base-color) 0%,
+      rgba(26, 25, 25, 0.32) 0%,
+      var(--_base-color) 100%
+    );
+
+    z-index: 1;
+  }
+}
+
+.ContentWrap {
+  position: absolute;
+  inset: 0;
+  height: 100dvh;
+}
+.Content {
+  position: absolute;
+  top: 50%;
+  translate: 0 -12.5%;
+  
+  margin: auto;
+  
+  z-index: 1;
+
+  & > * + * {
+    margin-block-start: var(--space-200);
+  }
+}
+.Title {
+  color: var(--text-primary-inverse);
+}
+.SocialIcons {
+  --icon-color: var(--text-tertiary-inverse);
+  
+  display: flex;
+  gap: var(--space-100);
+
+  margin-top: var(--space-400);
+  padding-top: var(--space-200);
+  border-top: solid 1px hsl(from var(--surface-bg-primary) h s l / 0.33);
+  width: fit-content;
+
+  & a {
+    --icon-size: var(--space-400);
+  }
+}
+
+@media( width >= 960px ) {
+  .Overlay {
+    background: linear-gradient(
+      94deg,
+      hsl(from var(--_base-color) h s l / 0.8) 24%,
+      hsl(from var(--_base-color) h s l / 0) 75%
+    );
+    
+    z-index: 1;
+  
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      
+      background: radial-gradient(
+        43.08% 30.69% at 0% 60%,
+        hsl(from var(--_base-color) h s l / 0.5) 0%,
+        hsl(from var(--_base-color) h s l / 0.29) 100%
+      );
+  
+      z-index: 1;
+    }
+  }
+
+  .Content {
+    margin-inline-start: var(--space-1000);
+
+    & > * + * {
+      margin-block-start: var(--space-400);
+    }
+  }
+  .SocialIcons {
+    & a {
+      --icon-size: 2.25rem;
+    }
+  }
+}
+
+@media( width >= 1080px ) {
+  .Content {
+    margin-inline-start: var(--space-1600);
+  }
+}
+
+@media( width >= 1280px ) {
+  .Overlay {
+    background: linear-gradient(
+      94deg,
+      hsl(from var(--_base-color) h s l / 0.8) 24%,
+      hsl(from var(--_base-color) h s l / 0) 66.67%
+    );
+  }
+  .Content {
+    margin-inline-start: var(--space-2000);
+  }
+}
+
+@media( width >= 1600px ) {
+  .Content {
+    margin-inline-start: var(--space-2500);
+  }
+}

@@ -1,0 +1,123 @@
+/*
+ * CSS Resets/Normalization
+ *  ~ Based off modern-normalize.css and personal experince. :)
+ */
+
+/*
+ * Use standard box model.
+ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/*
+ * Remove body margin.
+ */
+body {
+	margin: 0;
+}
+
+/*
+ * Remove default styling from lists (opt-in styles must be defined)
+ */
+ul, ol, dl {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+dd {
+  margin-left: 0;
+}
+  
+/*
+ * Remove default user agent styling from figures
+ */
+figure {
+  margin: 0;
+}
+
+/*
+ * Make images, videos, and objects block-level and constrain to parent width by default
+ */
+img,
+picture,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*
+ * Remove default styling from headers, blockquotes, paragraphs, and links (opt-in styles must be defined)
+ */
+h1, h2, h3, h4, h5, h6 {
+  margin-block: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+p {
+  margin-block: 0;
+}
+a {
+  color: inherit;        /* Forces all links to inherit color from parent (opt-in styles must be defined) */
+  text-decoration: none;
+}
+
+/*
+ * Remove default styling from buttons and some form elements
+ */
+button {
+  background-color: transparent;
+  border-width: 0;
+  padding: 0;
+  -webkit-appearance: none;
+}
+button, input, optgroup, select, textarea {
+  line-height: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+/*
+ * Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
+ */
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+sub {
+	bottom: -0.25em;
+}
+sup {
+	top: -0.4em;
+}
+
+/*
+ * Reset monospace default styling
+ */
+code,
+kbd,
+samp,
+pre {
+	font-family:
+		ui-monospace,
+		SFMono-Regular,
+		Consolas,
+		'Liberation Mono',
+		Menlo,
+		monospace;
+	font-size: 1em;
+}

@@ -1,0 +1,15 @@
+.Icon {
+  --_color: var(--icon-color, currentColor);
+  --_size: var(--icon-size, 1em);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: var(--_size);
+  height: var(--_size);
+
+  & svg {
+    fill: var(--_color);
+  }
+}

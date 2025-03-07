@@ -1,0 +1,155 @@
+.Switcher {
+  --_width: 3.75rem;
+  --_height: 2.25rem;
+  --_bg-color: var(--surface-bg-secondary);
+  --_bg-hover: var(--color-neutral-300);
+  --_border-color: var(--color-neutral-300);
+  --_border-color-active: var(--color-neutral-500);
+  --_thumb-shadow: var(--color-neutral-800);
+  --_icon-color: var(--color-neutral-700);
+  --_icon-size: 1em;
+  --_label-spacing: var(--space-100);
+
+  position: relative;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  gap: var(--space-100);
+
+  width: fit-content;
+  margin-inline: auto;
+  padding-inline: var(--_label-spacing);
+
+  border-radius: calc(var(--_height) / 2); /* <-- here for outline ring, inherited by track */
+
+  cursor: pointer;
+
+  /**
+   * States
+   */
+  &[data-skill='design'] {
+    --_bg-color: var(--color-blue-300);
+    --_bg-hover: var(--color-blue-400);
+    --_border-color: var(--color-blue-400);
+    --_border-color-active: var(--color-blue-500);
+    --_thumb-shadow: var(--color-blue-800);
+    --_icon-color: var(--color-blue-700);
+    --_icon-size: var(--12px);
+  }
+  &[data-skill='dev'] {
+    --_bg-color: var(--color-green-300);
+    --_bg-hover: var(--color-green-400);
+    --_border-color: var(--color-green-400);
+    --_border-color-active: var(--color-green-500);
+    --_thumb-shadow: var(--color-green-800);
+    --_icon-color: var(--color-green-700);
+    --_icon-size: var(--14px);
+
+    & .Thumb {
+      --orientation-mult: -1;
+      transform: translateX(calc(var(--_width) - var(--_size) - (var(--_pos) * 2) - 2px))
+                 rotate(180deg);
+    }
+  }
+  &[data-skill='design'] .Label[data-skill='design'],
+  &[data-skill='dev'] .Label[data-skill='dev'] {
+    color: var(--text-primary);
+    font-weight: var(--font-weight-medium);
+    font-stretch: var(--font-width-expanded);
+    letter-spacing: var(--letter-spacing--025);
+  }
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    .Track {
+      --_bg-color: var(--_bg-hover);
+    }
+  }
+  &:focus-visible {
+    outline: solid 2px var(--_icon-color);
+  }
+  &:active {
+    & .Track {
+      --_border-color: var(--_border-color-active);
+    }
+  }
+}
+
+.Label {
+  position: absolute;
+
+  color: var(--text-disabled);
+
+  transition: color 0.25s cubic-bezier(0.4, 0.0, 0.2, 1),
+              font-weight 0.25s cubic-bezier(0.4, 0.0, 0.2, 1),
+              font-stretch 0.25s cubic-bezier(0.4, 0.0, 0.2, 1),
+              letter-spacing 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);
+
+  &.Left {
+    left: 0;
+    translate: -100% 0;
+  }
+  &.Right {
+    right: 0;
+    translate: 100% 0;
+  }
+}
+
+.Track {
+  position: relative;
+
+  display: inline-block;
+
+  width: var(--_width);
+  height: var(--_height);
+
+  border-radius: inherit;
+  border: solid 1px var(--_border-color);
+  background-color: var(--_bg-color);
+
+  transition: background-color 0.125s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.Thumb {
+  --_size: 1.875rem;
+  --_pos: calc((var(--_height) - var(--_size)) / 3);
+  --_orientation-mult: var(--orientation-mult, 1);
+
+  position: absolute;
+  top: var(--_pos);
+  left: var(--_pos);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: var(--_size);
+  height: var(--_size);
+
+  color: var(--_icon-color);
+
+  background: var(--surface-bg-primary);
+  border-radius: 50%;
+  
+  box-shadow: 0px 2px 2px 0px hsl(from var(--_thumb-shadow) h s l / 0.1),
+              0px calc(2px * var(--_orientation-mult)) 4px 0px hsl(from var(--_thumb-shadow) h s l / 0.2);
+
+  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1),
+              color 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+.ThumbIcon {
+  --icon-size: var(--_icon-size);
+}
+
+@media( width >= 960px ) {
+  .Switcher {
+    --_width: 4rem;
+    --_height: 2.5rem;
+  }
+  .Thumb {
+    --_size: 2.125rem;
+  }
+}

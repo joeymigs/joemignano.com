@@ -1,0 +1,27 @@
+.Button {
+  position: absolute;
+  right: 50%;
+  left: 50%;
+  bottom: var(--layout-viewport-padding);
+  translate: -50% 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--color-neutral-800);
+  width: var(--space-700);
+  height: var(--space-700);
+  border-radius: 50%;
+
+  z-index: 3;
+
+  @media( width < 960px ) {
+    display: none;
+  }
+}
+
+.Arrow {
+  --icon-size: 1.5rem;
+  color: var(--text-disabled-inverse);
+}

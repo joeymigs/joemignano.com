@@ -1,0 +1,37 @@
+.StickyBar {
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: var(--space-700);
+
+  z-index: 1000;
+
+  /*
+   * Credit to Josh Comeau for the great effect: 
+   * https://www.joshwcomeau.com/css/backdrop-filter
+   */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: 200%;
+    backdrop-filter: blur(16px);
+    mask-image: linear-gradient(to bottom, black 0% 50%, transparent 50% 100%);
+
+    transition: background-color 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+
+  &.stuck {
+    &::before {
+      background-color: hsl(from var(--surface-bg-primary) h s l / 0.75);
+    }
+  }
+
+  @media( width >= 960px ) {
+    height: var(--space-800);
+  }
+}

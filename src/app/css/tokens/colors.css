@@ -1,0 +1,111 @@
+/**
+ * Colors Tokens
+ */
+:root {
+  /**
+   * Primitives
+   */
+  /* Neutrals */
+  --color-neutral-white: hsl(0, 0%, 100%);
+  --color-neutral-50: hsl(0, 4%, 98%);
+  --color-neutral-100: hsl(0, 4%, 95%);
+  --color-neutral-200: hsl(30, 4%, 91%);
+  --color-neutral-300: hsl(30, 3%, 88%);
+  --color-neutral-400: hsl(40, 3%, 83%);
+  --color-neutral-500: hsl(26, 3%, 45%);
+  --color-neutral-600: hsl(20, 3%, 36%);
+  --color-neutral-700: hsl(0, 1%, 26%);
+  --color-neutral-800: hsl(0, 1%, 15%);
+  --color-neutral-900: hsl(0, 2%, 10%);
+  --color-neutral-black: hsl(0, 0%, 0%);
+ 
+  /* Blues */
+  --color-blue-25: hsl(208, 100%, 98%);
+  --color-blue-50: hsl(208, 100%, 97%);
+  --color-blue-100: hsl(206, 100%, 95%);
+  --color-blue-200: hsl(207, 100%, 91%);
+  --color-blue-300: hsl(207, 100%, 87%);
+  --color-blue-400: hsl(207, 100%, 81%);
+  --color-blue-500: hsl(207, 100%, 74%);
+  --color-blue-600: hsl(207, 100%, 59%);
+  --color-blue-700: hsl(207, 100%, 45%);
+  --color-blue-750: hsl(207, 100%, 36%);
+  --color-blue-800: hsl(207, 100%, 25%);
+  --color-blue-900: hsl(206, 34%, 12%);
+
+  /* Greens */
+  --color-green-25: hsl(161, 80%, 97%);
+  --color-green-50: hsl(162, 80%, 96%);
+  --color-green-100: hsl(161, 89%, 93%);
+  --color-green-200: hsl(162, 80%, 88%);
+  --color-green-300: hsl(162, 80%, 78%);
+  --color-green-400: hsl(163, 80%, 67%);
+  --color-green-500: hsl(162, 80%, 48%);
+  --color-green-600: hsl(163, 80%, 38%);
+  --color-green-700: hsl(162, 80%, 29%);
+  --color-green-800: hsl(162, 79%, 17%);
+  --color-green-900: hsl(160, 15%, 12%);
+
+  /* Reds */
+  --color-red: hsl(0, 100%, 46%);
+ 
+  /**
+   * Semantic
+   */
+  /* Text Colors */
+  --text-primary: var(--color-neutral-900);
+  --text-secondary: var(--color-neutral-800);
+  --text-tertiary: var(--color-neutral-700);
+  --text-disabled: var(--color-neutral-500);
+  --text-primary-inverse: var(--color-neutral-50);
+  --text-secondary-inverse: var(--color-neutral-100);
+  --text-tertiary-inverse: var(--color-neutral-200);
+  --text-disabled-inverse: var(--color-neutral-400);
+  --text-link: var(--color-green-700);
+  --text-link-inverse: var(--color-green-400);
+  --text-accent-design: var(--color-blue-800);
+  --text-accent-dev: var(--color-green-800);
+
+  /* Surface Colors */
+  --surface-bg-primary: var(--color-neutral-white);
+  --surface-bg-secondary: var(--color-neutral-200);
+  --surface-bg-primary-inverse: var(--color-neutral-900);
+  --surface-bg-secondary-inverse: var(--color-green-900);
+  --surface-accent-design: var(--color-blue-100);
+  --surface-accent-dev: var(--color-green-100);
+  --surface-link: var(--color-green-600);
+
+  /* Content-specific Colors */
+  --case-study-bg-bookfinder: #fafbfd;
+  --case-study-underline-bookfinder: #1a96f0;
+  --case-study-cta-bookfinder: #0170C0;
+  --case-study-summary-card-bg-bookfinder: #f7f7f9;
+
+  --case-study-bg-jg-2020s:  #ffffff;
+  --case-study-underline-jg-2020s: #ed0000;
+  --case-study-cta-jg-2020s: #ed0000;
+  --case-study-summary-card-bg-jg-2020s: #f8f8f8;
+
+  --case-study-bg-jg-2010s:  #fbfbfb;
+  --case-study-underline-jg-2010s: #3b2827;
+  --case-study-summary-card-bg-jg-2010s: #f7f6f6;
+
+  /**
+   * Gradients
+   */
+   --gradient-blue-to-green-light: linear-gradient(
+    90deg,
+    var(--color-blue-100) 0%,
+    var(--color-green-100) 100%
+  );
+   --gradient-blue-to-green-med: linear-gradient(
+    90deg,
+    var(--color-green-500) 0%,
+    var(--color-blue-500) 100%
+  );
+  --gradient-blue-to-green-dark: linear-gradient(
+    90deg,
+    var(--color-blue-800) 0%,
+    var(--color-green-700) 100%
+  );
+}

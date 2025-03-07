@@ -1,0 +1,39 @@
+.CaseStudyTeaserImage--jg2020s-mobile {
+  position: absolute;
+  height: fit-content;
+
+  @media( width < 768px ) {
+    right: var(--space-300);
+    top: 18%;
+    width: min(30%, 128px);
+  }
+  @media( 480px <= width < 560px ) {
+    right: var(--space-600);
+    top: clamp(120px, 17.5%, 160px);
+    width: clamp(128px, 26.25%, 160px);
+  }
+  @media( 528px <= width < 560px ) {
+    top: clamp(136px, 17.5%, 160px);
+  }
+  @media( 560px <= width < 768px ) {
+    right: var(--space-800);
+    top: clamp(120px, 17.5%, 136px);
+    width: clamp(128px, 27.5%, 152px);
+  }
+  @media( 640px <= width < 768px ) {
+    top: clamp(120px, 20%, 136px);
+  }
+  @media( width >= 768px ) {
+    bottom: clamp(-96px, -17.5cqh, -80px);
+    width: clamp(240px, 25cqw, 320px);
+  }
+  @media( 768px <= width < 1280px ) {
+    display: none;
+  }
+  @media( 1280px <= width < 1480px ) {
+    right: 0;
+  }
+  @media( width >= 1480px ) {
+    right: calc(((100cqw - 100vw) / 2) + clamp(48px, 3.33vw, 80px));
+  }
+}

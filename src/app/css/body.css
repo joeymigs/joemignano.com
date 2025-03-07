@@ -1,0 +1,10 @@
+body {
+  font-size: var(--font-size-body-m);
+  font-weight: var(--font-weight-light);
+
+  color: var(--text-primary);
+  background: var(--surface-bg-primary);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

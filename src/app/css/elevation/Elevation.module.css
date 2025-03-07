@@ -1,0 +1,7 @@
+.Elevation {
+  &.\100 { box-shadow: var(--elevation-100); }
+  &.\200 { box-shadow: var(--elevation-200); }
+  &.\300 { box-shadow: var(--elevation-300); }
+  &.\400 { box-shadow: var(--elevation-400); }
+  &.\500 { box-shadow: var(--elevation-500); }
+}
