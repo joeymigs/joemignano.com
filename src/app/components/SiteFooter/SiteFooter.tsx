@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'motion/react'
 
 import Icon from '../Icon'
-import Arrow from '@/assets/icons/arrow.svg'
+import Arrow from '@/assets/icons/Arrow.svg'
 
 import css from './SiteFooter.module.css'
 import typo from '@/css/typography/Typography.module.css'
