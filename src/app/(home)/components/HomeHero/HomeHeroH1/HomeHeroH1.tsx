@@ -1,6 +1,6 @@
 "use client"
 
-import AnimateText from '@/components/AnimateText'
+import AnimatedText from '@/components/AnimatedText'
 import { motion, useScroll, useTransform } from 'motion/react'
 
 export default function HomeHeroH1({ className }: { className: string }) {
@@ -11,7 +11,7 @@ export default function HomeHeroH1({ className }: { className: string }) {
 
   return (
     <motion.h1 className={className} style={{ opacity, scale }}>
-      <AnimateText
+      <AnimatedText
         split="words"
         wrapVariants={{
           initial: {
@@ -32,7 +32,8 @@ export default function HomeHeroH1({ className }: { className: string }) {
           initial: { y: 64 },
           animate: { opacity: 0.5, transition: { duration: 1.33 }},
         }}
-      >Hi, I’m Joe.</AnimateText>
+        animateOnLoad
+      >Hi, I’m Joe.</AnimatedText>
     </motion.h1>
   )
 }

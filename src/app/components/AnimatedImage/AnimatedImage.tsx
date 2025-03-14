@@ -44,6 +44,7 @@ export default function AnimatedImage({
         ? { animate: "animate" }
         : { whileInView: "animate", viewport: mergedViewportOptions }
       }
+      exit="exit"
     >
       {children}
     </motion.div>

@@ -6,7 +6,7 @@ import AnimatedImage, { defaultVariants, defaultViewportOptions } from "@/compon
 import css from './PhoneFrame.module.css'
 import cx from 'classnames'
 
-type PhoneFrameProps = PropsWithChildren<{
+export type PhoneFrameProps = PropsWithChildren<{
   wrapClass?: string;
   frameClass?: string;
   shimColor?: string;

@@ -1,21 +1,14 @@
 .Image {
-  --_bg: var(--bg, none);
   --overlay-inset: var(--space-200);
+  --border-radius: var(--border-radius-l);
 
   position: relative;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   width: 100%;
   height: fit-content;
+  min-height: auto;
+  
   aspect-ratio: 5 / 4;
-
-  background: var(--bg);
-  border-radius: var(--border-radius-l);
-
-  overflow: clip;
 
   &.VertOnMobile {
     @media( width < 424px ) { aspect-ratio: 5 / 6; }
@@ -27,16 +20,6 @@
     @media( width >= 1280px ) { aspect-ratio: 5 / 4; }
   }
 
-  &.align-bottom {
-    aspect-ratio: auto;
-  }
-  &.justify-start {
-    justify-content: flex-start;
-  }
-  &.justify-end {
-    justify-content: flex-end;
-  }
-
   @media( width < 768px ) {
     &.MobileMarginBreakout {
       width: calc(100% + (var(--layout-viewport-padding) * 2));
@@ -46,14 +29,65 @@
   }
   @media( width >= 960px ) {
     --overlay-inset: var(--space-300);
+    --border-radius: var(--border-radius-xl);
+  }
 
-    border-radius: var(--border-radius-xl);
+  @media (hover: hover) {
+    &:hover {
+      .SlideButton {
+        box-shadow: var(--elevation-50);
+      }
+    }
+  }
+}
+
+.BgWrap {
+  --_bg: var(--bg, none);
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  
+  background: var(--_bg);
+  border-radius: var(--border-radius);
+
+  overflow: clip;
+
+  transition: background 1.33s cubic-bezier(0.5, 0.04, 0, 0.99);
+
+  &.justify-start {
+    justify-content: flex-start;
+  }
+  &.justify-end {
+    justify-content: flex-end;
+  }
+}
+
+.BgImg {
+  position: absolute;
+  inset: 0;
+
+  mix-blend-mode: multiply;
+
+  & img {
+    object-fit: cover;
+    height: 100%;
   }
 }
 
 .ContentWrap {
-  position: absolute;
+  width: 100%;
+  height: 100%;
 
+  &.mobile,
+  &.desktop {
+    position: absolute;
+  }
   &.mobile {
     --_min-width: 16rem;
     --_max-width: 18rem;
@@ -79,8 +113,6 @@
   &.desktop {
     top: var(--space-300);
     left: var(--space-300);
-  
-    width: 100%;
   
     @media( width >= 480px ) {
       top: var(--space-400);
@@ -113,9 +145,55 @@
   background-color: var(--surface-bg-primary);
   border-radius: var(--border-radius-m);
 
-  padding: var(--space-50) var(--space-100);
+  padding: var(--space-100) var(--space-150);
 
   box-shadow: 0 1px 3px hsl(from var(--surface-bg-primary-inverse) h s l / 0.03),
               0 2px 6px hsl(from var(--surface-bg-primary-inverse) h s l / 0.06),
               0 4px 12px hsl(from var(--surface-bg-primary-inverse) h s l / 0.12);
+}
+
+/* Carousel */
+.SlideButton {
+  --_position: var(--space-100);
+  --_button-size: var(--space-500);
+  --icon-size: var(--12px);
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  height: var(--_button-size);
+  width: var(--_button-size);
+
+  color: var(--text-secondary);
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  
+  cursor: pointer;
+  
+  z-index: 1;
+
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  &[data-slide-button="prev"] {
+    left: var(--_position);
+  }
+  &[data-slide-button="next"] {
+    right: var(--_position);
+  }
+
+  @media not ( hover: hover ) {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: var(--elevation-50);
+  }
+
+  @media( width >= 960px ) {
+    --_position: var(--space-300);
+    --_button-size: var(--space-600);
+    --icon-size: var(--14px);
+  }
 }

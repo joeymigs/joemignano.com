@@ -25,8 +25,8 @@ export default function Video({
 }: VideoProps) {
   const { isVisible, targetRef } = useIsVisible<HTMLDivElement>({
     options: {
-      rootMargin: "200px",
-      threshold: 0.1,
+      // rootMargin: "200px",
+      threshold: 0.33,
       ...lazyOptions,
     }
   })

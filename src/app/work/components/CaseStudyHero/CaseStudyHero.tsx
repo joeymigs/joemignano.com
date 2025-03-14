@@ -1,7 +1,7 @@
 import type { CaseStudyHero } from "@/types"
 
 import SkillPills from "@/components/SkillPills"
-import AnimateText from "@/components/AnimateText"
+import AnimatedText from "@/components/AnimatedText"
 
 import css from './CaseStudyHero.module.css'
 import grid from '@/css/grid/Grid.module.css'
@@ -16,12 +16,15 @@ export default function CaseStudyHero({ title, desc, skills, image }: CaseStudyH
         <header className={cx(css.Header, grid['xl--Col-3-10'])}>
           <SkillPills skills={skills} className={css.SkillPills} delimiter="+" animate />
           <h1 className={cx(typo.HeadingL, typo.Pretty, css.Title)}>
-            <AnimateText>{title}</AnimateText>
+            <AnimatedText animateOnLoad>{title}</AnimatedText>
           </h1>
           <p className={cx(typo.BodyL, typo.Pretty, css.Desc)}>
-            <AnimateText wrapVariants={{ animate: { transition: { delayChildren: 0.1 }}}}>
+            <AnimatedText
+              animateOnLoad
+              wrapVariants={{ animate: { transition: { delayChildren: 0.1 }}}}
+            >
               {desc}
-            </AnimateText>
+            </AnimatedText>
           </p>
         </header>
         <div className={css.ImageWrap}>

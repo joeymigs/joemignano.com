@@ -2,6 +2,8 @@ import type { CSSProperties } from "react"
 
 import { getImageProps } from "next/image"
 
+import AnimatedImage from "@/components/AnimatedImage"
+
 export default function AboutHeroPic() {
   const common = {
     alt: 'Joe in the Japanese South Alps',
@@ -15,7 +17,7 @@ export default function AboutHeroPic() {
     width: 2976,
     height: 1536,
     quality: 80,
-    src: '/images/joe-about-desktop.jpg',
+    src: '/images/about/joe-about-desktop.jpg',
   })
   const {
     props: { srcSet: mobile, ...heroAttributes },
@@ -24,7 +26,7 @@ export default function AboutHeroPic() {
     width: 731,
     height: 1536,
     quality: 70,
-    src: '/images/joe-about-mobile.jpg',
+    src: '/images/about/joe-about-mobile.jpg',
   })
   const styles = {
     objectFit: "cover",
@@ -36,10 +38,18 @@ export default function AboutHeroPic() {
   }
 
   return (
-    <picture>
-      <source media="(min-width: 640px)" srcSet={desktop} style={styles as CSSProperties} />
-      <source media="(max-width: 479px)" srcSet={mobile} style={styles as CSSProperties} />
-      <img {...heroAttributes} alt={common.alt} style={styles as CSSProperties} />
-    </picture>
+    <AnimatedImage
+      variants={{
+        initial: { y: 0 },
+        animate: { y: 0, transition: { duration: 3 }},
+      }}
+      animateOnLoad
+    >
+      <picture>
+        <source media="(min-width: 560px)" srcSet={desktop} style={styles as CSSProperties} />
+        <source media="(max-width: 559px)" srcSet={mobile} style={styles as CSSProperties} />
+        <img {...heroAttributes} alt={common.alt} style={styles as CSSProperties} />
+      </picture>
+    </AnimatedImage>
   )
 }

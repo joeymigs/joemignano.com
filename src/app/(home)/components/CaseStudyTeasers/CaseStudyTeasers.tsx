@@ -2,7 +2,7 @@ import { CaseStudyTeaser } from '@/(home)/content'
 
 import Link from 'next/link'
 
-import AnimateText from '@/components/AnimateText'
+import AnimatedText from '@/components/AnimatedText'
 import SkillPills from '@/components/SkillPills'
 import Icon from '@/components/Icon'
 import Arrow from '@/assets/icons/Arrow.svg'
@@ -25,11 +25,11 @@ export default function CaseStudyTeasers({ teasers = [] }: CaseStudyTeasersProps
       <div className={css.HeaderWrap} style={{backgroundColor: `var(${teasers[0]?.bgToken})`}}>
         <header className={cx(css.Header, grid.SiteGrid, layout.Main)}>
           <h2 className={cx(typo.HeadingL, grid['ml--Col-2'], grid['xxl--Col-1-6'])}>
-            <AnimateText
+            <AnimatedText
               style={{ display: 'block', overflow: 'hidden' }}
               split="letters"
               segmentVariants={{ initial: { y: 20 } }}
-            >Selected Work</AnimateText>
+            >Selected Work</AnimatedText>
           </h2>
         </header>
       </div>
@@ -50,6 +50,7 @@ export default function CaseStudyTeasers({ teasers = [] }: CaseStudyTeasersProps
                 <div className={typo.Hover}>
                   <Link href={url}>
                     <h3 className={cx(css.Title, typo.DisplayM, typo.Balance)}>
+                      <span className={css.TeaserNo}>{i < 10 && 0}{i + 1}.</span>
                       <span className={typo.Link}>{title}</span>
                     </h3>
                     <p className={cx(typo.BodyM, css.Desc)}>{desc}</p>

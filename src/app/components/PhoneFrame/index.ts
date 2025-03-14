@@ -1,1 +1,1 @@
-export { default } from './PhoneFrame'
+export { default, type PhoneFrameProps } from './PhoneFrame'

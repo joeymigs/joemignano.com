@@ -9,8 +9,8 @@
   --font-size-display-xs: var(--14px);
   --font-size-display-s: var(--18px);
   --font-size-display-m: var(--20px);
-  --font-size-display-l: clamp(var(--56px), calc(16vw - 0.5rem), var(--64px));
-  --font-size-display-xl: min(calc(46.4vw - 2rem), var(--160px));
+  --font-size-display-l: clamp(var(--48px), calc(15vw - 0.5rem), var(--64px));
+  --font-size-display-xl: min(calc(40vw - 2rem), var(--160px));
 
   --font-size-heading-s: var(--20px);
   --font-size-heading-m: var(--24px);
@@ -26,8 +26,8 @@
   --line-height-display-s: var(--24px);
   --line-height-display-m: var(--24px);
   --line-height-display-l: var(--40px);
-  --line-height-display-l: clamp(var(--48px), 12.5vw, var(--56px));
-  --line-height-display-xl: min(calc(32vw - 0.75rem), 7.5rem);
+  --line-height-display-l: clamp(var(--40px), 12vw, var(--56px));
+  --line-height-display-xl: min(calc(35.5vw - 0.5rem), 12rem);
 
   --line-height-heading-s: var(--24px);
   --line-height-heading-m: var(--32px);

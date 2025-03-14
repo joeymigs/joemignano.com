@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react'
 
-import AnimateText from '@/components/AnimateText'
+import AnimatedText from '@/components/AnimatedText'
 
 import Icon from '@/components/Icon'
 import MiniJapan from '@/assets/icons/i-heart-japan.svg'
@@ -23,17 +23,18 @@ export default function HomeHeroTagline() {
           <Icon svg={MiniJapan} className={css.MiniJapan} />
         </motion.div>
       </div>
-      <AnimateText
+      <AnimatedText
         split='words'
         wrapVariants={{ animate: { transition: { delayChildren: 2 }}}}
         className={cx(typo.BodyM, typo.Prose, typo.Inverse)}
+        animateOnLoad
       >
         <p>
           Former developer & designer for Japan’s top Google-ranked English travel website,
           <br /> 
           <a href="https://www.japan-guide.com" target="_blank" rel="noopener">japan-guide.com</a>
         </p>
-      </AnimateText>
+      </AnimatedText>
     </div>
   )
 }

@@ -2,6 +2,8 @@
 
 import type { Variants } from "@/types/animation"
 
+import { socials } from "@/data/socials"
+
 import { useState, useRef, useEffect } from "react"
 
 import { motion } from "motion/react"
@@ -22,6 +24,7 @@ import X from "@/assets/icons/X.svg"
 import css from './MainNav.module.css'
 import typo from "@/css/typography/Typography.module.css"
 import cx from 'classnames'
+import IconLinks from "../IconLinks"
 
 const wrapVariants: Variants = {
   open: {
@@ -39,7 +42,15 @@ const wrapVariants: Variants = {
     x: 160,
   }
 }
-
+const menuVariants: Variants = {
+  open: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.33,
+    }
+  },
+  closed: {}
+}
 const linkVariants: Variants = {
   closed: {
     y: 16, opacity: 0,
@@ -57,7 +68,7 @@ const linkVariants: Variants = {
 type MainNavProps = { className?: string }
 
 export default function MainNav({ className = '' }: MainNavProps) {
-  const menuRef = useRef<HTMLUListElement>(null)
+  const menuRef = useRef(null)
   const [open, setOpen] = useState(false)
   const lenis = useLenis()
 
@@ -78,7 +89,7 @@ export default function MainNav({ className = '' }: MainNavProps) {
   }, [open, lenis])
 
   return (
-    <nav className={cx(className, css.Wrap, {[css.Open]: open})} aria-label="Main Navigation">
+    <div className={cx(className, css.Wrap, {[css.Open]: open})} aria-label="Main Navigation">
       <button 
         className={css.Trigger}
         onClick={() => setOpen(!open)}
@@ -90,61 +101,94 @@ export default function MainNav({ className = '' }: MainNavProps) {
         <Icon svg={X} className={css.X} />
       </button>
       
-      <motion.ul
-        id="main-menu"
-        className={css.Menu}
+      <motion.nav
+        className={css.MenuWrap}
         role="menu"
         ref={menuRef}
         variants={wrapVariants}
         initial="closed"
         animate={open ? "open" : "closed"}
       >
-        <motion.li
-          data-id="home"
-          onClick={handleLinkClick}
-          variants={linkVariants}
+        <motion.ul
+          className={css.Menu}
+          variants={menuVariants}
+          initial="closed"
+          animate={open ? "open" : "closed"}
         >
-          <Link className={cx(css.Link, typo.Hover)} href="/">
-            <span className={typo.Link}>Home</span>
-          </Link>
-        </motion.li>
-        <motion.li
-          data-id="work"
-          onClick={handleLinkClick}
-          variants={linkVariants}
-        >
-          <Link className={cx(css.Link, typo.Hover)} href="/#work">
-            <span className={typo.Link}>Work</span>
-          </Link>
-        </motion.li>
-        <motion.li
-          data-id="about"
-          onClick={handleLinkClick}
-          variants={linkVariants}
-        >
-          <Link className={cx(css.Link, typo.Hover)} href="/about">
-            <span className={typo.Link}>About</span>
-          </Link>
-        </motion.li>
-        <motion.li
-          data-id="contact"
-          onClick={handleLinkClick}
-          variants={linkVariants}
-        >
-          <Link className={cx(css.Link, typo.Hover)} href="#contact">
-            <span className={typo.Link}>Contact</span>
-          </Link>
-        </motion.li>
+          <motion.li
+            data-id="home"
+            onClick={handleLinkClick}
+            variants={linkVariants}
+          >
+            <Link className={cx(css.Link, typo.Hover)} href="/">
+              <span className={typo.Link}>Home</span>
+            </Link>
+          </motion.li>
+          <motion.li
+            data-id="work"
+            onClick={handleLinkClick}
+            variants={linkVariants}
+          >
+            <Link className={cx(css.Link, typo.Hover)} href="/#work">
+              <span className={typo.Link}>Work</span>
+            </Link>
+          </motion.li>
+          <motion.li
+            data-id="about"
+            onClick={handleLinkClick}
+            variants={linkVariants}
+          >
+            <Link className={cx(css.Link, typo.Hover)} href="/about">
+              <span className={typo.Link}>About</span>
+            </Link>
+          </motion.li>
+          <motion.li
+            data-id="contact"
+            onClick={handleLinkClick}
+            variants={linkVariants}
+          >
+            <Link className={cx(css.Link, typo.Hover)} href="#contact">
+              <span className={typo.Link}>Contact</span>
+            </Link>
+          </motion.li>
 
-        <motion.li data-id="connect-button">
-          <Button variant="catchy" className={css.Button} href="#contact" inline>
-            Let’s Connect
-          </Button>
-        </motion.li>
+          <motion.li data-id="connect-button">
+            <Button variant="catchy" className={css.Button} href="#contact" inline>
+              Let’s Connect
+            </Button>
+          </motion.li>
+        </motion.ul>
+
+        <div data-id="mobile-footer" className={css.MobileFooter}>
+          <motion.div
+            className={css.Email}
+            variants={menuVariants}
+            initial="closed"
+            animate={open ? "open" : "closed"}
+          >
+            <motion.span variants={linkVariants}>Email Address:</motion.span>
+            <motion.a
+              href="mailto:joe@joemignano.com"
+              className={typo.Underline}
+              variants={linkVariants}
+            >
+              joe@joemignano.com
+            </motion.a>
+          </motion.div>
+          
+          <IconLinks
+            links={socials}
+            className={css.Socials}
+            wrapVariants={menuVariants}
+            linkVariants={linkVariants}
+            initial="closed"
+            animate={open ? "open" : "closed"}
+          />
+        </div>
 
         <div className={cx(css.BgCircle, css.c1)} />
         <div className={cx(css.BgCircle, css.c2)} />
-      </motion.ul>
-    </nav>
+      </motion.nav>
+    </div>
   )
 }

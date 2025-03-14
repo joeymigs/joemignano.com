@@ -1,3 +1,6 @@
+import type { ReactNode } from "react"
+import type { StaticImageData } from "next/image"
+
 /* Pages */
 export type PageData = {
   headerMode: SiteHeaderMode;
@@ -18,42 +21,56 @@ export type Skill = {
 
 /* Case Studies */
 export type CaseStudyHero = {
-  title: React.ReactNode;
-  desc: React.ReactNode;
+  title: ReactNode;
+  desc: ReactNode;
   skills: Skill[];
-  image: React.ReactNode;
+  image: ReactNode;
 }
 
 export type CaseStudySummary = {
   sections: {
-    heading: React.ReactNode;
-    content: React.ReactNode;
+    heading: ReactNode;
+    content: ReactNode;
     isProse?: boolean; 
   }[];
-  side?: React.ReactNode;
+  side?: ReactNode;
+}
+
+/* Case Study Features */
+export type CaseStudyFeatureImage = {
+  type?: 'mobile' | 'desktop'; 
+  bgColor?: `#${string}`;
+  bg?: string;
+  bgImage?: StaticImageData;
+  verticalOnMobile?: boolean;
+  caption?: ReactNode;    
+  additionalContent?: ReactNode;
+  justify?: 'start' | 'center' | 'end';
+  aspectRatio?: string;
+  mobileMarginBreakout?: boolean;
+} & (
+  | { slides: CaseStudyFeatureImageSlide[]; component?: never }
+  | { component: ReactNode; slides?: never }
+);
+
+export type CaseStudyFeatureImageSlide = {
+  component: ReactNode;
+  bgColor?: `#${string}`;
+  bg?: string;
+  bgImage?: StaticImageData;
+  caption?: ReactNode;
 }
 
 export type CaseStudyFeature = {
   skill?: Skill;
-  heading: React.ReactNode;
-  text: React.ReactNode;
+  heading: ReactNode;
+  text: ReactNode;
   textAlign?: 'center' | 'top';
-  image: {
-    component: React.ReactNode;
-    type?: 'mobile' | 'desktop'; 
-    bgColor?: `#${string}`;
-    bg?: string;
-    verticalOnMobile?: boolean;
-    caption?: React.ReactNode;    
-    additional?: React.ReactNode;
-    align?: 'left' | 'right' | 'bottom';
-    justify?: 'start' | 'center' | 'end';
-    mobileMarginBreakout?: boolean;
-  };
+  image: CaseStudyFeatureImage;
   imagePosition?: 'left' | 'right' | 'bottom';
 }
 export type CaseStudyFeatureContentOnly = {
-  content: React.ReactNode;
+  content: ReactNode;
 }
 export type CaseStudySkillType = 'design' | 'dev'
 export type CaseStudyFeatureSet = (CaseStudyFeature | CaseStudyFeatureContentOnly)[]

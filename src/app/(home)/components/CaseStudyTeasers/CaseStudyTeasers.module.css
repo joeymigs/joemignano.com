@@ -3,7 +3,6 @@
   --_border-top-radius: var(--border-radius-xl);
 
   position: relative;
-  counter-reset: teaserNo;
 }
 .HeaderWrap {
   border-top-right-radius: var(--_border-top-radius);
@@ -16,8 +15,6 @@
 .TeaserWrap {
   position: sticky;
   top: 0;
-
-  counter-increment: teaserNo;
 
   transition: border-radius 0.15s;
   
@@ -35,18 +32,16 @@
 
 .Title {
   position: relative;
-  
-  &::before {
-    content: "0" counter(teaserNo) ".";
-    position: absolute;
-    left: 0;
-    bottom: 100%;
-    translate: -22.5% -0.15ex;
-    font-size: 5.5rem;
-    color: var(--text-disabled);
-    opacity: 0.08;
-    letter-spacing: var(--letter-spacing--05);
-  }
+}
+.TeaserNo {
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  translate: -22.5% -0.15ex;
+  font-size: 5.5rem;
+  color: var(--text-disabled);
+  opacity: 0.08;
+  letter-spacing: var(--letter-spacing--05);
 }
 
 .Desc {
@@ -92,10 +87,8 @@
     order: 1;
     max-width: 28rem;
   }
-  .Title {
-    &::before {
-      content: "";
-    }
+  .TeaserNo {
+    display: none;
   }
   .Image {
     margin-bottom: var(--space-400);
@@ -197,13 +190,11 @@
     --_max-height: 880px;
   }
   .Teaser {
-    height: clamp(760px, 100dvh, var(--_max-height));
+    height: clamp(760px, 100svh, var(--_max-height));
   }
 
-  .Title {
-    &::before {
-      font-size: var(--128px);
-    }
+  .TeaserNo {
+    font-size: var(--128px);
   }
 
   .Image {
@@ -223,20 +214,16 @@
   }
 }
 @media( width >= 1280px ) {
-  .Title {
-    &::before {
-      font-size: var(--152px);
-    }
+  .TeaserNo {
+    font-size: var(--152px);
   }
   .Image {
     --_margin-offset: 25cqw;
   }
 }
 @media( width >= 1400px ) {
-  .Title {
-    &::before {
-      font-size: var(--160px);
-    }
+  .TeaserNo {
+    font-size: var(--160px);
   }
   .Image {
     margin-right: calc((100cqw * -1) + 100% + (var(--layout-viewport-padding) * 8));

@@ -30,7 +30,7 @@ export default function CaseStudyFeature(props: CaseStudyFeature | CaseStudyFeat
   return (
     <div className={wrapClasses}>
       <div className={cx(css.ImageWrap, grid['ml--Col-Span-6'])}>
-        <CaseStudyFeatureImage {...image!} align={imagePosition} />
+        <CaseStudyFeatureImage {...image} />
       </div>
       <div className={cx(css.TextWrap, grid['ml--Col-Span-6'], grid.Subgrid)}>
         <div className={textClasses}>

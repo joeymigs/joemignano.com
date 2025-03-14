@@ -13,7 +13,7 @@ import Image from 'next/image'
 
 import { OtherWorkTeaser } from '@/(home)/content'
 
-import AnimateText from '@/components/AnimateText'
+import AnimatedText from '@/components/AnimatedText'
 import Icon from '@/components/Icon'
 import Arrow from '@/assets/icons/Arrow.svg'
 
@@ -57,13 +57,13 @@ export default function OtherWorkTeasers({ teasers = [] }: OtherWorkTeasersProps
       <div className={cx(grid.SiteGrid, layout.Main)}>
         <header className={css.HeaderCard}>
           <h2 className={typo.HeadingL} style={{maxWidth: '16ch'}}>
-            <AnimateText
+            <AnimatedText
               style={{ display: 'block', overflow: 'hidden' }}
               split="letters"
               segmentVariants={{ initial: { y: 20 } }}
             >
               Other work for <span style={{display: 'inline-block'}}>japan-guide.com <i>&mdash;</i></span>
-            </AnimateText>
+            </AnimatedText>
           </h2>
         </header>
       </div>
@@ -85,6 +85,8 @@ export default function OtherWorkTeasers({ teasers = [] }: OtherWorkTeasersProps
                 { [css.isHoverable]: animationIsComplete },
                 typo.Hover,
               )}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <Image src={image} className={css.Image} alt={imageAlt} />
               <div className={css.Text}>

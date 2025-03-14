@@ -1,4 +1,4 @@
-import AnimateText from '@/components/AnimateText'
+import AnimatedText from '@/components/AnimatedText'
 
 import css from './HomeHeroAvailability.module.css'
 import typo from '@/css/typography/Typography.module.css'
@@ -7,17 +7,19 @@ import cx from 'classnames'
 export default function HomeHeroAvailability() {
   return (
     <div className={css.Wrap}>
-      <AnimateText
+      <AnimatedText
         wrapVariants={{ animate: { transition: { delayChildren: 2 }}}}
         split='words'
         className={typo.BodyS}
-      >Available for work —</AnimateText>
-      <AnimateText
+        animateOnLoad
+      >Available for work —</AnimatedText>
+      <AnimatedText
         wrapVariants={{ animate: { transition: { delayChildren: 2.33 }}}}
         segmentVariants={{initial: { y: 16 }}}
         split='words'
         className={cx(css.Date, typo.HeadingL)}
-      >Mar ‘25</AnimateText>
+        animateOnLoad
+      >Mar ‘25</AnimatedText>
     </div>
   )
 }

@@ -1,0 +1,19 @@
+.Wrap {
+  --_icon-size: var(--icon-size, var(--space-400));
+  --_icon-gap: var(--icon-gap, var(--space-50));
+
+  display: flex;
+
+  gap: var(--_icon-gap);
+
+  & svg {
+    transition: fill 0.3s ease;
+  }
+  & a {
+    --icon-size: var(--_icon-size);
+
+    &:hover {
+      --icon-color: var(--text-link-inverse);
+    }
+  }
+}

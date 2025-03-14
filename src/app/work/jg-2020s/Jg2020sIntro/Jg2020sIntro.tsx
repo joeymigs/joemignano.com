@@ -23,7 +23,7 @@ export default function Jg2020sIntro() {
              a <strong>mobile-friendly, modern design</strong>, more <strong>intuitive 
              navigation</strong>, and <strong>faster page speeds</strong> for travelers from around 
              the world.</p>
-          <p>My biggest role at JG was to make those things happen.</p>
+          <p>My main role at JG was to make those things happen.</p>
         </div>
       </div>
     </section>

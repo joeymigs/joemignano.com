@@ -9,6 +9,8 @@
   flex-direction: column;
 
   margin-bottom: -0.33em; /* better align baseline to viewport padding */
+
+  max-width: 33.33%;
 }
 
 .Date {

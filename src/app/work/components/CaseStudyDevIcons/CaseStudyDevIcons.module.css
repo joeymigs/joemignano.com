@@ -13,6 +13,14 @@
   flex-direction: column;
   gap: var(--_gap);
 
+  background-color: var(--bg);
+  box-shadow: 0 1px 3px  hsl(from var(--surface-bg-primary-inverse) h s l / 0.015),
+              0 2px 6px  hsl(from var(--surface-bg-primary-inverse) h s l / 0.03),
+              0 4px 12px hsl(from var(--surface-bg-primary-inverse) h s l / 0.06),
+              0 8px 24px hsl(from var(--surface-bg-primary-inverse) h s l / 0.12);
+  border-radius: var(--border-radius-m);
+  padding: var(--space-75);
+
   &.left {
     left: var(--_inset);
   }
@@ -20,15 +28,15 @@
     right: var(--_inset);
   }
 
-  @media( width < 480px ) {
-    background-color: var(--bg-color);
+  /* @media( width < 480px ) {
+    background-color: var(--bg);
     box-shadow: 0 1px 3px  hsl(from var(--surface-bg-primary-inverse) h s l / 0.015),
                 0 2px 6px  hsl(from var(--surface-bg-primary-inverse) h s l / 0.03),
                 0 4px 12px hsl(from var(--surface-bg-primary-inverse) h s l / 0.06),
                 0 8px 24px hsl(from var(--surface-bg-primary-inverse) h s l / 0.12);
     border-radius: var(--border-radius-m);
     padding: var(--space-75);
-  }
+  } */
   @media( width >= 960px ) {
     --icon-size: var(--space-500);
   }
