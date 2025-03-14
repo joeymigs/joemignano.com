@@ -1,1 +1,1 @@
-export { default } from './BrowserFrame'
+export { default, type BrowserFrameProps } from './BrowserFrame'

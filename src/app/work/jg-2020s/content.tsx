@@ -1,4 +1,9 @@
-import type { CaseStudyHero, CaseStudySummary, CaseStudyFeaturesBySkill } from "@/types"
+import type {
+  CaseStudyHero,
+  CaseStudySummary,
+  CaseStudyFeaturesBySkill,
+  CaseStudyFeatureImageSlide,
+} from "@/types"
 
 import Link from "next/link"
 import Image from "next/image"
@@ -8,24 +13,146 @@ import HeroImage from "./HeroImage"
 import CaseStudyDeliverables from "@/work/components/CaseStudyDeliverables"
 import CaseStudySummaryCta from "@/work/components/CaseStudySummaryCta"
 import CaseStudyDevIcons from "@/work/components/CaseStudyDevIcons"
-import PhoneFrame from "@/components/PhoneFrame"
+import PhoneFrame, { PhoneFrameProps } from "@/components/PhoneFrame"
 import BrowserFrame from "@/components/BrowserFrame"
 import Video from "@/components/Video"
 
-import ShikokuImg from '/public/images/work/jg-2020s/Shikoku-mobile.jpg'
-import JgDocsImg from '/public/images/work/jg-2020s/JgDocs-Images-desktop.jpg'
+import MobileBg1 from "/public/images/work/jg-2020s/mobile-bg-shikoku.jpg"
+import MobileBg2 from "/public/images/work/jg-2020s/mobile-bg-festivals.jpg"
+import MobileBg3 from "/public/images/work/jg-2020s/mobile-bg-home-regions.jpg"
+import MobileBg4 from "/public/images/work/jg-2020s/mobile-bg-bus-tables.jpg"
+import MobileBg5 from "/public/images/work/jg-2020s/mobile-bg-booking.jpg"
 
-import devIconPhp from '@/assets/icons/dev/php.svg'
-import devIconCss from '@/assets/icons/dev/css.svg'
-import devIconSass from '@/assets/icons/dev/sass.svg'
-import devIconJs from '@/assets/icons/dev/js.svg'
+import ShikokuImg from '/public/images/work/jg-2020s/Shikoku-mobile.jpg'
+import FestivalsImg from "/public/images/work/jg-2020s/Festivals-mobile.jpg"
+import HomeRegionsImg from "/public/images/work/jg-2020s/Home-Regions-mobile.jpg"
+import BusTablesImg from "/public/images/work/jg-2020s/Bus-Tables-mobile.jpg"
+import BookingImg from "/public/images/work/jg-2020s/Booking-mobile.jpg"
+
+import NavMenuBg1 from '/public/images/work/jg-2020s/nav-menu-bg-1.jpg'
+import NavMenuBg2 from '/public/images/work/jg-2020s/nav-menu-bg-2.jpg'
+
+import JgDocsImg1 from '/public/images/work/jg-2020s/JgDocs-1.jpg'
+import JgDocsImg2 from '/public/images/work/jg-2020s/JgDocs-2.jpg'
+import JgDocsImg4 from '/public/images/work/jg-2020s/JgDocs-3.jpg'
+
+import DevIconPhp from '@/assets/icons/dev/php.svg'
+import DevIconCss from '@/assets/icons/dev/css.svg'
+import DevIconSass from '@/assets/icons/dev/sass.svg'
+import DevIconJs from '@/assets/icons/dev/js.svg'
 
 import Button from "@/components/Button"
 import Icon from "@/components/Icon"
 import Arrow from "@/assets/icons/Arrow.svg"
 
-import css from './CaseStudy.module.css'
 import typo from '@/css/typography/Typography.module.css'
+
+const frameProps: Partial<PhoneFrameProps> = {
+  shadow: 300,
+  animate: true,
+  viewportOptions: { amount: 0.1 },
+  variants: {
+    animate: { transition: { duration: 1.67 }},
+    exit: { opacity: 0, y: 24, transition: { duration: 0.33 }},
+  },
+}
+
+const goingMobileSlides: CaseStudyFeatureImageSlide[] = [
+  {
+    bgImage: MobileBg1,
+    component: (
+      <PhoneFrame {...frameProps}>
+        <Image src={ShikokuImg} alt="Shikoku regional page, mobile version" />
+      </PhoneFrame>
+    ),
+  },
+  {
+    bgImage: MobileBg2,
+    component: (
+      <PhoneFrame {...frameProps} shimColor="#ffffff">
+        <Image src={FestivalsImg} alt="Festivals page, mobile version" />
+      </PhoneFrame>
+    ),
+  },
+  {
+    bgImage: MobileBg3,
+    component: (
+      <PhoneFrame {...frameProps}>
+        <Image src={HomeRegionsImg} alt="Regions of Japan, Homepage, mobile version" />
+      </PhoneFrame>
+    ),
+  },
+  {
+    bgImage: MobileBg4,
+    component: (
+      <PhoneFrame {...frameProps} shimColor="#ffffff">
+        <Image src={BusTablesImg} alt="Bus timetables, mobile version" />
+      </PhoneFrame>
+    ),
+  },
+  {
+    bgImage: MobileBg5,
+    component: (
+      <PhoneFrame {...frameProps} shimColor="#ffffff">
+        <Image src={BookingImg} alt="Booking.com listings integration, mobile version" />
+      </PhoneFrame>
+    ),
+  },
+]
+
+const navMenuSlides: CaseStudyFeatureImageSlide[] = [
+  {
+    bgImage: NavMenuBg1,
+    component: (
+      <PhoneFrame {...frameProps}>
+        <Video
+          src="/images/work/jg-2020s/explore-menu.mp4"
+          poster="/images/work/jg-2020s/explore-menu-poster.jpg"
+          alt="Explore Menu in action"
+        />
+      </PhoneFrame>
+    ),
+    caption: <><strong>Early attempts:</strong> “Explore Menu,” circa 2019–2022</>,
+  },
+  {
+    // bgColor: "#f4f9ff",
+    bgImage: NavMenuBg2,
+    component: (
+      <PhoneFrame {...frameProps}>
+        <Video
+          src="/images/work/jg-2020s/new-section-nav.mp4"
+          poster="/images/work/jg-2020s/ExploreMenu-mobile.jpg"
+          alt="New section nav menus in action"
+        />
+      </PhoneFrame>
+    ),
+    caption: <><strong>Latest solution:</strong> New section & site navigation, 2023–</>,
+  }
+]
+
+const jgDocsSlides: CaseStudyFeatureImageSlide[] = [
+  {
+    component: (
+      <BrowserFrame {...frameProps}>
+        <Image src={JgDocsImg1} alt="japan-guide.com's JG Docs" />
+      </BrowserFrame>
+    ),
+  },
+  {
+    component: (
+      <BrowserFrame  {...frameProps}>
+        <Image src={JgDocsImg2} alt="japan-guide.com's JG Docs" />
+      </BrowserFrame>
+    ),
+  },
+  {
+    component: (
+      <BrowserFrame  {...frameProps}>
+        <Image src={JgDocsImg4} alt="japan-guide.com's JG Docs" />
+      </BrowserFrame>
+    ),
+  },
+]
 
 export const hero: CaseStudyHero = {
   title: <>japan-guide.com, Welcome to the <span className={typo.Underline}>2020s</span></>,
@@ -42,9 +169,13 @@ export const summary: CaseStudySummary = {
     {
       heading: 'Background',
       content: <>
-        <p>After a major design and codebase overhaul in 2015 (see my <Link href="/work/jg-2010s">2015 
-           case study</Link>), the groundwork had been laid to start realizing our bigger 
-           goals for japan-guide.com.</p>
+        <p>After a major design and codebase overhaul (see my <Link href="/work/jg-2010s">2015 
+           case study</Link>), the groundwork had been laid to start realizing bigger goals for 
+           japan-guide.com. We’d made major strides in UX and development, but there was still work 
+           to do. JG still needed a <strong>mobile-friendly, modern design</strong>, more <strong>intuitive 
+           navigation</strong>, and <strong>faster page speeds</strong> for travelers from around 
+           the world.</p>
+        <p>My main role at JG was to make those things happen.</p>
         <p>This case study highlights some of my key efforts over my last 5 years at Japan Guide as  
            our team’s sole product designer and developer to make the site’s user experience 
            delightful, fast, and competitive with big name competitors.</p>
@@ -59,15 +190,15 @@ export const summary: CaseStudySummary = {
       content: <CaseStudyDeliverables items={[
         {
           skill: [{ type: 'design', name: 'Design' }, { type: 'dev', name: 'Dev' }],
-          desc: 'New, fully responsive, mobile-friendly UX',
+          desc: <strong>Fully responsive, mobile-friendly UX</strong>,
         },
         {
           skill: [{ type: 'design', name: 'Design' }, { type: 'dev', name: 'Dev' }],
-          desc: 'Optimized site & sectional navigation',
+          desc: <strong>Optimized site & sectional navigation</strong>,
         },
         {
           skill: [{ type: 'design', name: 'Design' }, { type: 'dev', name: 'Dev' }],
-          desc: 'Modern site-wide design system',
+          desc: <strong>Modern site-wide design system</strong>,
         },
       ]} />,
       isProse: false,
@@ -99,11 +230,7 @@ export const features: CaseStudyFeaturesBySkill = {
         bgColor: '#DCEBFB',
         verticalOnMobile: true,
         type: 'mobile',
-        component: (
-          <PhoneFrame shadow={300} animate viewportOptions={{ amount: 0.1 }}>
-            <Image src={ShikokuImg} alt="Shikoku regional page, mobile version" />
-          </PhoneFrame>
-        ),
+        slides: goingMobileSlides,
       }
     },
     {
@@ -120,25 +247,10 @@ export const features: CaseStudyFeaturesBySkill = {
            boosting discoverability.</p>
       </>,
       image: {
-        bgColor: '#a5b9cf',
+        bgColor: "#e5f1ff",
         verticalOnMobile: true,
         type: 'mobile',
-        component: (
-          <PhoneFrame
-            shadow={300}
-            shimColor="var(--surface-bg-primary-inverse)"
-            hasTallShim
-            animate
-            viewportOptions={{ amount: 0.1 }}
-          >
-            <Video
-              src="/images/work/jg-2020s/explore-menu.mp4"
-              poster="/images/work/jg-2020s/ExploreMenu-mobile.jpg"
-              alt="Explore Menu in action"
-            />
-          </PhoneFrame>
-        ),
-        caption: "The “Explore Menu,” circa 2019–2022",
+        slides: navMenuSlides,
       },
     },
     {
@@ -156,11 +268,7 @@ export const features: CaseStudyFeaturesBySkill = {
       image: {
         bgColor: '#F4F2FD',
         type: 'desktop',
-        component: (
-          <BrowserFrame shadow={300} animate viewportOptions={{ amount: 0.1 }}>
-            <Image src={JgDocsImg} alt="japan-guide.com's JG Docs" />
-          </BrowserFrame>
-        ),
+        slides: jgDocsSlides,
       }
     },
   ],
@@ -183,12 +291,14 @@ export const features: CaseStudyFeaturesBySkill = {
         bgColor: '#DDFEF5',
         verticalOnMobile: true,
         type: 'mobile',
-        component: (
-          <PhoneFrame shadow={300} animate viewportOptions={{ amount: 0.1 }}>
-            <Image src={ShikokuImg} alt="Shikoku regional page, mobile version" />
-          </PhoneFrame>
+        slides: goingMobileSlides,
+        additionalContent: (
+          <CaseStudyDevIcons icons={[
+            <DevIconPhp key="php-icon" />,
+            <DevIconCss key="css-icon" />,
+            <DevIconJs key="js-icon" />
+          ]} />
         ),
-        additional: <CaseStudyDevIcons icons={[devIconPhp, devIconCss, devIconJs]} />,
       }
     },
     {
@@ -202,25 +312,20 @@ export const features: CaseStudyFeaturesBySkill = {
            Japan SVG maps were calculated dynamically.</p>
       </>,
       image: {
-        bgColor: '#becdc8',
+        bgColor: '#e8fef8',
         verticalOnMobile: true,
         type: 'mobile',
-        component: (
-          <PhoneFrame
-            shadow={300}
-            shimColor="var(--surface-bg-primary-inverse)"
-            hasTallShim
-            animate
-            viewportOptions={{ amount: 0.1 }}
-          >
-            <Video
-              src="/images/work/jg-2020s/explore-menu.mp4"
-              poster="/images/work/jg-2020s/ExploreMenu-mobile.jpg"
-            />
-          </PhoneFrame>
+        slides: navMenuSlides,
+        additionalContent: (
+          <CaseStudyDevIcons
+            icons={[
+              <DevIconPhp key="php-icon" />,
+              <DevIconCss key="css-icon" />,
+              <DevIconJs key="js-icon" />
+            ]}
+            align="right"
+          />
         ),
-        additional: <CaseStudyDevIcons align="right" icons={[devIconPhp, devIconCss, devIconJs]} />,
-        caption: "The “Explore Menu,” circa 2019–2022",
       },
     },
     {
@@ -238,17 +343,10 @@ export const features: CaseStudyFeaturesBySkill = {
       image: {
         bgColor: '#FDF2F9',
         type: 'desktop',
-        component: (
-          <BrowserFrame
-            shadow={300}
-            wrapClass={css.DevIconOffset}
-            animate
-            viewportOptions={{ amount: 0.1 }}
-          >
-            <Image src={JgDocsImg} alt="japan-guide.com's JG Docs" />
-          </BrowserFrame>
-        ),
-        additional: <CaseStudyDevIcons icons={[devIconSass, devIconCss]} />,
+        slides: jgDocsSlides,
+        additionalContent: <CaseStudyDevIcons icons={[
+          <DevIconSass key="sass-icon" />, <DevIconCss key="css-icon" />,
+        ]} />,
       }
     },
   ],

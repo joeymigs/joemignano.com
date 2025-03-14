@@ -29,7 +29,8 @@
   @media( width < 560px ) {
     gap: var(--space-100);
 
-    max-width: min(50% - (var(--layout-viewport-padding) * 2), 24ch);
+    /* max-width: min(50% - (var(--layout-viewport-padding) * 2), 24ch); */
+    max-width: min(50%, 24ch);
   }
 }
 .MiniJapan {

@@ -1,6 +1,6 @@
 "use client"
 
-import { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react"
 
 import useIsVisible from "@/hooks/useIsVisible"
 
@@ -12,7 +12,11 @@ type CaseStudyTeaserWrapProps = PropsWithChildren<{
   style?: React.CSSProperties
 }>
 
-export default function CaseStudyTeaserWrap({ className, style, children }: CaseStudyTeaserWrapProps) {
+export default function CaseStudyTeaserWrap({
+  className,
+  style,
+  children,
+}: CaseStudyTeaserWrapProps) {
   const { isVisible, targetRef } = useIsVisible<HTMLDivElement>({
     options: { threshold: 0.925, rootMargin: '100% 0px 0px 0px' },
   })

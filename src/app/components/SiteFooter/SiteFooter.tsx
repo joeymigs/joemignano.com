@@ -1,8 +1,12 @@
 "use client"
 
+import { socials } from '@/data/socials'
+import { colophon } from '@/data/colophon'
+
 import { motion, useScroll, useTransform } from 'motion/react'
 
-import Icon from '../Icon'
+import Icon from '@/components/Icon'
+import IconLinks from '@/components/IconLinks'
 import Arrow from '@/assets/icons/Arrow.svg'
 
 import css from './SiteFooter.module.css'
@@ -16,8 +20,8 @@ export default function SiteFooter() {
   const scale = useTransform(scrollYProgress, [0.9, 1], [0.95, 1])
   const y = useTransform(scrollYProgress, [0.9, 1], [64, 0])
 
-  const copyrightOpacity = useTransform(scrollYProgress, [1, 0.99], [1, 0])
-  const copyrightY = useTransform(scrollYProgress, [1, 0.99], [0, 8])
+  const bottomOpacity = useTransform(scrollYProgress, [1, 0.975], [1, 0])
+  const bottomY = useTransform(scrollYProgress, [1, 0.975], [0, 8])
 
   return (
     <footer className={css.Wrap} id="contact">
@@ -31,9 +35,20 @@ export default function SiteFooter() {
         </h2>
         <p className={typo.BodyM}>Got a project? Let’s talk. :)</p>
       </motion.div>
-      <motion.div className={css.Copyright} style={{ opacity: copyrightOpacity, y: copyrightY }}>
-        <p className={typo.DisplayXS}>©2024 Joe Mignano</p>
-      </motion.div>
+
+      <div className={css.FooterFooter}>
+        <motion.div className={css.Socials} style={{ opacity: bottomOpacity, y: bottomY }}>
+          <span className={cx(css.FooterLabel ,typo.DisplayXS)}>Find me on:</span>
+          <IconLinks links={socials} className={css.Icons} />
+        </motion.div>
+        <motion.div className={css.Colophon} style={{ opacity: bottomOpacity, y: bottomY }}>
+          <span className={cx(css.FooterLabel ,typo.DisplayXS)}>Built with:</span>
+          <IconLinks links={colophon} className={css.Icons} />
+        </motion.div>
+        <motion.div className={css.Copyright} style={{ opacity: bottomOpacity, y: bottomY }}>
+          <span className={typo.DisplayXS}>©2024 Joe Mignano</span>
+        </motion.div>
+      </div>
     </footer>
   )
 }

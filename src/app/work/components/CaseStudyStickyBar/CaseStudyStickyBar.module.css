@@ -32,6 +32,6 @@
   }
 
   @media( width >= 960px ) {
-    height: var(--space-800);
+    height: var(--space-900);
   }
 }

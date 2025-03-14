@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react"
+import type { PropsWithChildren } from "react"
 import type { Metadata } from "next"
 
 import { Archivo } from 'next/font/google'
@@ -15,8 +15,7 @@ import "@/css/global.css"
 import "@/css/html.css"
 import "@/css/body.css"
 
-import { ReactLenis } from '@/util/lenis'
-
+import ReactLenisWrap from "@/components/ReactLenisWrap"
 import SiteHeader from "@/components/SiteHeader"
 import SiteMain from "@/components/SiteMain"
 import SiteFooter from "@/components/SiteFooter"
@@ -24,6 +23,20 @@ import SiteFooter from "@/components/SiteFooter"
 export const metadata: Metadata = {
   title: "Joe Mignano | Product Designer & Web Developer ",
   description: "Portfolio of Joe Mignano, a product designer and web developer based in Denver, CO.",
+  icons: {
+    icon: [
+      {
+        type: 'image/svg+xml',
+        media: '(prefers-color-scheme: light)',
+        url: '/favicon-light.svg',
+      },
+      {
+        type: 'image/svg+xml',
+        media: '(prefers-color-scheme: dark)',
+        url: '/favicon-dark.svg',
+      },
+    ],
+  },
 }
 
 const archivo = Archivo({
@@ -35,13 +48,13 @@ const archivo = Archivo({
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
-      <ReactLenis root>
-        <body className={archivo.className}>
+      <body className={archivo.className}>
+        <ReactLenisWrap>
           <SiteHeader />
           <SiteMain>{children}</SiteMain>
           <SiteFooter />
-        </body>
-      </ReactLenis>
+        </ReactLenisWrap>
+      </body>
     </html>
   )
 }

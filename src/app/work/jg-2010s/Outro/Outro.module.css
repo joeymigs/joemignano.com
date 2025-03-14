@@ -1,6 +1,6 @@
 .Wrap {
   row-gap: var(--space-500);
-  margin-bottom: var(--space-1000);
+  padding-bottom: var(--space-1000);
 }
 
 .Section {
@@ -29,13 +29,13 @@
 }
 @media( width >= 560px ) {
   .Wrap {
-    margin-bottom: var(--space-1200);
+    padding-bottom: var(--space-1200);
   }
 }
 @media( width >= 960px ) {
   .Wrap {
     row-gap: var(--space-1000);
-    margin-bottom: var(--space-2000);
+    padding-bottom: var(--space-2000);
   }
   .Section {
     row-gap: var(--space-1000);

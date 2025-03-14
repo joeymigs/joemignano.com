@@ -26,7 +26,7 @@ export default function HeroImage() {
           frameClass={css.MobileFrame}
           shimColor="#fff"
           animate
-          variants={{ animate: { transition: { delay: 0.67 }}}}
+          variants={{ animate: { transition: { delay: 1.33 }}}}
           animateOnLoad
         >
           <Image src={mobileImage} alt="japan-guide.com, Shimokita Peninsula page" />

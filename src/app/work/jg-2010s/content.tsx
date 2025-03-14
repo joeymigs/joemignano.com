@@ -11,13 +11,18 @@ import DevProcess from "./DevProcess"
 import Image from 'next/image'
 import AnimatedImage from "@/components/AnimatedImage"
 
-// design images
+// summary image
 import summaryOldHp from '/public/images/work/jg-2010s/summary-old-hp-3.jpg'
-import redesign1 from '/public/images/work/jg-2010s/design-feature-redesign-1.jpg'
-import redesign2 from '/public/images/work/jg-2010s/design-feature-redesign-2.jpg'
-import redesign3 from '/public/images/work/jg-2010s/design-feature-redesign-3.jpg'
-import redesign4 from '/public/images/work/jg-2010s/design-feature-redesign-4.jpg'
-import redesign5 from '/public/images/work/jg-2010s/design-feature-redesign-5.jpg'
+
+// design images
+import designFeature1 from '/public/images/work/jg-2010s/design-feature-1.png'
+import designFeature2 from '/public/images/work/jg-2010s/design-feature-2.jpg'
+import designFeature3_1 from '/public/images/work/jg-2010s/design-feature-redesign-1.jpg'
+import designFeature3_2 from '/public/images/work/jg-2010s/design-feature-redesign-2.jpg'
+import designFeature3_3 from '/public/images/work/jg-2010s/design-feature-redesign-3.jpg'
+import designFeature3_4 from '/public/images/work/jg-2010s/design-feature-redesign-4.jpg'
+import designFeature3_5 from '/public/images/work/jg-2010s/design-feature-redesign-5.jpg'
+import designFeature4 from '/public/images/work/jg-2010s/design-feature-4.png'
 
 // dev images/icons
 import fullOfTables from '/public/images/work/jg-2010s/dev-full-of-tables.jpg'
@@ -44,8 +49,8 @@ type DevProcessStep = {
 
 export const hero: CaseStudyHero = {
   title: <>japan-guide.com, Welcome to the <span className={typo.Underline}>2010s</span></>,
-  desc: <>My first project at JG: Redesign and rebuild a 15-year-old site, and make its 2,000+ pages 
-         of content effortless to navigate.</>,
+  desc: <>My first project at JG: Redesign and rebuild a 15-year-old site, and make its 2,000+ 
+          pages of content effortless to navigate.</>,
   skills: [
     { type: 'design', name: 'Product Design' },
     { type: 'dev', name: 'Full-Stack Dev' },
@@ -58,9 +63,10 @@ export const summary: CaseStudySummary = {
     {
       heading: 'Background',
       content: <>
-        <p>In 2014, japan-guide.com was at a turning point. As one of Japan’s top Google-ranked 
-           English tourism sites, serving 2M+ unique visitors on average every month, JG had 
-           cemented itself as a reliable and beloved brand amongst travelers to Japan.</p>
+        <p>In 2014, <a href="https://www.japan-guide.com" target="_blank" rel="noopener noreferrer">japan-guide.com</a> was 
+           at a turning point. As one of Japan’s top Google-ranked  English tourism sites, serving 
+           2M+ unique visitors on average every month, JG had cemented itself as a reliable and 
+           beloved brand amongst travelers to Japan.</p>
         <p>The problem? <strong>The site hadn’t seen a major design update since 2005.</strong></p>
         <p>JG had been regularly publishing up-to-date content since 1996, but the site’s design — 
            and codebase — had not kept up. For many visitors, this blast-from-the-past UX gave an 
@@ -75,10 +81,22 @@ export const summary: CaseStudySummary = {
     {
       heading: 'Key Deliverables',
       content: <CaseStudyDeliverables items={[
-        { skill: { type: 'design', name: 'Design' }, desc: 'Streamline information architecture & navigation' },
-        { skill: { type: 'design', name: 'Design' }, desc: 'Refresh visual identity' },
-        { skill: { type: 'design', name: 'Design' }, desc: 'Modernize site design' },
-        { skill: { type: 'dev', name: 'Dev' }, desc: 'New front-end codebase with custom PHP/JS framework' },
+        {
+          skill: { type: 'design', name: 'Design' },
+          desc: <strong>Streamlined info architecture & navigation</strong>,
+        },
+        {
+          skill: { type: 'design', name: 'Design' },
+          desc: <strong>Refreshed brand’s visual identity</strong>,
+        },
+        {
+          skill: { type: 'design', name: 'Design' }, 
+          desc: <strong>Modernized site design</strong>,
+        },
+        {
+          skill: { type: 'dev', name: 'Dev' },
+          desc: <><strong>New custom front-end framework</strong> (PHP/JS/CSS)</>,
+        },
       ]} />,
       isProse: false,
     }
@@ -119,12 +137,7 @@ export const features: CaseStudyFeaturesBySkill = {
       image: {
         component: (
           <AnimatedImage>
-            <Image
-              src="/images/work/jg-2010s/design-feature-1.svg"
-              alt="Redesigning japan-guide.com information architecture"
-              width="704"
-              height="576"
-            />
+            <Image src={designFeature1} alt="Redesigning japan-guide.com information architecture" />
           </AnimatedImage>
         ),
       },
@@ -146,14 +159,10 @@ export const features: CaseStudyFeaturesBySkill = {
       image: {
         bgColor: '#EFF3F7',
         justify: 'end',
+        aspectRatio: '1 / 1',
         component: (
           <AnimatedImage>
-            <Image
-              src="/images/work/jg-2010s/design-feature-2.svg"
-              alt="Auditing all of japan-guide.com's design elements"
-              width="672"
-              height="672"
-            />
+            <Image src={designFeature2} alt="Auditing all of japan-guide.com's design elements" />
           </AnimatedImage>
         ),
       },
@@ -177,19 +186,19 @@ export const features: CaseStudyFeaturesBySkill = {
         component: (
           <div className={css.RedesignCollage}>
             <AnimatedImage className={css['jg2010s-redesign-img-1']}>
-              <Image src={redesign1} alt="Early design sketches" />
+              <Image src={designFeature3_1} alt="Early design sketches" />
             </AnimatedImage>
             <AnimatedImage className={css['jg2010s-redesign-img-2']}>
-              <Image src={redesign2} alt="“Aquariums” page nationwide map design idea" />
+              <Image src={designFeature3_2} alt="“Aquariums” page nationwide map design idea" />
             </AnimatedImage>
             <AnimatedImage className={css['jg2010s-redesign-img-3']}>
-              <Image src={redesign3} alt="Miyajima page design idea" />
+              <Image src={designFeature3_3} alt="Miyajima page design idea" />
             </AnimatedImage>
             <AnimatedImage className={css['jg2010s-redesign-img-4']}>
-              <Image src={redesign4} alt="“Autumn Leaves” page design idea" />
+              <Image src={designFeature3_4} alt="“Autumn Leaves” page design idea" />
             </AnimatedImage>
             <AnimatedImage className={css['jg2010s-redesign-img-5']}>
-              <Image src={redesign5} alt="Japanese History” timeline design idea" />
+              <Image src={designFeature3_5} alt="Japanese History” timeline design idea" />
             </AnimatedImage>
           </div>
         ),
@@ -214,13 +223,12 @@ export const features: CaseStudyFeaturesBySkill = {
       </>,
       imagePosition: 'left',
       image: {
+        aspectRatio: 'unset',
         component: (
           <AnimatedImage>
             <Image
-              src="/images/work/jg-2010s/design-feature-4.svg"
+              src={designFeature4}
               alt="New logo, typefaces, color palette, and iconography for japan-guide.com"
-              width="672"
-              height="1111"
             />
           </AnimatedImage>
         ),

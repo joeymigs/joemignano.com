@@ -7,7 +7,7 @@ import css from './BrowserFrame.module.css'
 import grid from '@/css/grid/Grid.module.css'
 import cx from 'classnames'
 
-type BrowserFrameProps = PropsWithChildren<{
+export type BrowserFrameProps = PropsWithChildren<{
   wrapClass?: string;
   frameClass?: string;
   shadow?: 100 | 200 | 300 | 400 | 500;

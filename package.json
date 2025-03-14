@@ -11,7 +11,7 @@
   "dependencies": {
     "@img-comparison-slider/react": "^8.0.2",
     "classnames": "^2.5.1",
-    "lenis": "^1.1.22",
+    "lenis": "^1.2.3",
     "lodash.merge": "^4.6.2",
     "motion": "^12.4.7",
     "next": "^15.1.4",

@@ -3,7 +3,7 @@
 
   background-color: var(--surface-bg-primary-inverse);
   
-  height: max(200dvh, 720px);
+  height: max(150dvh, 720px);
 
   overflow: clip;
 
@@ -28,8 +28,8 @@
 .BG {
   position: sticky;
   top: 0;
-  width: 100dvw;
-  height: 100dvh;
+  width: 100lvw;
+  height: 100lvh;
 
   z-index: 0;
 }
@@ -65,14 +65,16 @@
 .ContentWrap {
   position: absolute;
   inset: 0;
-  height: 100dvh;
+  height: 100%;
 }
 .Content {
-  position: absolute;
-  top: 50%;
-  translate: 0 -12.5%;
+  position: sticky;
+  top: max(25%, var(--space-2500));
   
   margin: auto;
+  max-width: 54ch !important;
+
+  color: var(--text-primary-inverse);
   
   z-index: 1;
 
@@ -80,23 +82,12 @@
     margin-block-start: var(--space-200);
   }
 }
-.Title {
-  color: var(--text-primary-inverse);
-}
-.SocialIcons {
-  --icon-color: var(--text-tertiary-inverse);
-  
-  display: flex;
-  gap: var(--space-100);
 
-  margin-top: var(--space-400);
-  padding-top: var(--space-200);
+.Socials {
+  margin-top: var(--space-300);
+  padding-top: var(--space-150);
   border-top: solid 1px hsl(from var(--surface-bg-primary) h s l / 0.33);
   width: fit-content;
-
-  & a {
-    --icon-size: var(--space-400);
-  }
 }
 
 @media( width >= 960px ) {
@@ -128,12 +119,7 @@
     margin-inline-start: var(--space-1000);
 
     & > * + * {
-      margin-block-start: var(--space-400);
-    }
-  }
-  .SocialIcons {
-    & a {
-      --icon-size: 2.25rem;
+      margin-block-start: var(--space-300);
     }
   }
 }

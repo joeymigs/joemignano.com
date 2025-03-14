@@ -47,7 +47,7 @@ export default function Outro() {
           ]}
         />
         <BeforeAfter
-          heading="Destination"
+          heading="Destination page"
           beforeImage={destBeforeImg}
           afterImage={destAfterImg}
           callouts={[
@@ -68,7 +68,7 @@ export default function Outro() {
             { text: 'New CTAs and social links', top: '45.3%', side: 'left', length: '7.75cqw' },
             { text: 'Highest traffic sections featured', top: '66%', side: 'left', length: '7.2cqw'},
             { text: 'Lots of images', top: '87.6%', side: 'left', length: '5.2cqw'},
-            { text: 'More inviting user engagement', top: '69.3%', side: 'right', length: '5.75cqw' },
+            { text: 'More user engagement', top: '69.3%', side: 'right', length: '5.75cqw' },
           ]}
         />
       </section>

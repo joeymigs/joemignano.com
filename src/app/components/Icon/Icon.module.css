@@ -6,10 +6,9 @@
   align-items: center;
   justify-content: center;
 
-  width: var(--_size);
-  height: var(--_size);
-
   & svg {
     fill: var(--_color);
+    width: var(--_size);
+    height: var(--_size);
   }
 }

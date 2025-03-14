@@ -39,15 +39,12 @@
   align-items: center;
   gap: var(--space-100);
 
-  & > * {
-    width: 2rem;
-    height: 2rem;
-  }
+  --icon-size: 2rem;
 }
 
 @media( width < 560px ) {
   .Wrap {
-    margin-top: calc(var(--_item-gap)* -0.25);
+    margin-top: calc(var(--_item-gap) * -0.25);
   }
 }
 @media( width < 600px ) {
@@ -55,7 +52,7 @@
     display: flex;
 
     overflow-x: scroll;
-    margin-inline: calc(var(--layout-viewport-padding)* -1);
+    margin-inline: calc(var(--layout-viewport-padding) * -1);
     scroll-snap-type: x;
     padding-inline: var(--layout-viewport-padding);
     scroll-padding-inline: var(--layout-viewport-padding);
@@ -92,10 +89,7 @@
     grid-template-rows: 3rem minmax(min-content, 8rem) 1fr;
   }
   .DevIcons {
-    & > * {
-      width: 2.5rem;
-      height: 2.5rem;
-    }
+    --icon-size: 2.5rem;
   }
 }
 @media( width >= 1120px ) {

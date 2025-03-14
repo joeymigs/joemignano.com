@@ -1,22 +1,38 @@
 .Deliverables {
-  --_gap: var(--space-150);
+  --_row-gap: var(--space-100);
+  --_gap: var(--space-200);
 
   display: flex;
   flex-direction: column;
 
-  row-gap: var(--_gap);
-
-  & > * + * {
-    border-top: solid 1px var(--color-neutral-200);
-  }
+  row-gap: var(--_row-gap);
 }
 .Deliverable {
   display: flex;
   align-items: center;
 
   column-gap: var(--_gap);
+  padding: var(--_gap);
+  margin-inline: calc(var(--_gap) * -1);
 
-  padding-block-start: var(--_gap);
+  border-radius: var(--border-radius-xl);
+
+  min-height: 4lh;
+
+  &.design {
+    background: linear-gradient(-90deg, var(--color-blue-25) 33.3%, var(--color-blue-200) 100%);
+  }
+  &.dev {
+    background: linear-gradient(-90deg, var(--color-green-25) 33.3%, var(--color-green-200) 100%);
+  }
+  &.dnd {
+    background: linear-gradient(
+      -90deg,
+      hsl(from var(--color-green-50) h s l / 0.5) 0%,
+      hsl(from var(--color-green-100) h s l / 0.5) 50%,
+      var(--color-blue-200) 100%
+    );
+  }
 }
 .Skill {
   flex: none;
@@ -27,11 +43,10 @@
 }
 .Desc {
   flex-grow: 1;
-  font-weight: var(--font-weight-medium);
 }
 
 @media( width > 960px ) {
   .Deliverables {
-    --_gap: var(--space-200);
+    --_gap: var(--space-300);
   }
 }

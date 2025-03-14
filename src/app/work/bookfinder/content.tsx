@@ -46,17 +46,29 @@ export const summary: CaseStudySummary = {
         <p>“I am always in search of several hundred titles,” they told me, “and find myself
           Googling these titles several times a week.” The manual process was both 
           time-consuming and risky, as valuable finds easily slipped through the cracks.</p>
-        <p>So, they commissioned me. The task: <strong>build an app that tracks book listings and 
+        <p>Luckily, they found me. The task: <strong>build an app that tracks book listings and 
           price changes</strong> across multiple sites and daily auctions.</p>
       </>,
     },
     {
       heading: 'Key Deliverables',
       content: <CaseStudyDeliverables items={[
-        { skill: { type: 'design', name: 'Design' }, desc: 'Bespoke UI design' },
-        { skill: { type: 'dev', name: 'Dev' }, desc: 'Google Cloud Functions-powered back end' },
-        { skill: { type: 'dev', name: 'Dev' }, desc: 'Node.js scripts tailored to each target site' },
-        { skill: { type: 'dev', name: 'Dev' }, desc: 'Browser-based React front-end' },
+        {
+          skill: { type: 'design', name: 'Design' },
+          desc: <strong>Bespoke UI design</strong>,
+        },
+        {
+          skill: { type: 'dev', name: 'Dev' },
+          desc: <strong>Google Cloud Functions-powered back end</strong>,
+        },
+        {
+          skill: { type: 'dev', name: 'Dev' },
+          desc: <><strong>Node.js scripts</strong> tailored to each target site</>,
+        },
+        {
+          skill: { type: 'dev', name: 'Dev' },
+          desc: <><strong>React front end</strong> using Tanstack Query, React Router</>,
+        },
       ]} />,
       isProse: false,
     }
@@ -210,6 +222,7 @@ export const features: CaseStudyFeaturesBySkill = {
            navigation, and Vite for development and bundling.</p>
       </>,
       image: {
+        aspectRatio: 'unset',
         component: (
           <AnimatedImage>
             <Image
