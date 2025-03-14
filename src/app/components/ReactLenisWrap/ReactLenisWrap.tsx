@@ -31,11 +31,7 @@ export default function ReactLenisWrap({ children }: PropsWithChildren) {
     frame.update(update, true)
 
     return () => cancelFrame(update)
-<<<<<<< HEAD
   }, [disableLenis])
-=======
-  }, [])
->>>>>>> origin/main
 
   if (disableLenis)
     return <>{children}</>
