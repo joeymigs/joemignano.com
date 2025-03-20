@@ -14,7 +14,7 @@ export default function HeroImage() {
         variants={{ animate: { transition: { delay: 0.33 }}}}
         animateOnLoad
       >
-        <Image src={heroImage} alt="Bookinder, New Listings view" />
+        <Image src={heroImage} alt="Bookinder, New Listings view" priority />
       </BrowserFrame>
     </div>
   )

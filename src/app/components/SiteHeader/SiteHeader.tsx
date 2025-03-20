@@ -4,11 +4,9 @@ import { motion } from 'motion/react'
 
 import { useSiteHeaderData } from './useSiteHeaderData'
 
-import Link from 'next/link'
-import MainNav from '@/components/MainNav'
+import BackButton from '@/components/BackButton'
 import SiteLogo from '@/components/SiteLogo'
-import Icon from '@/components/Icon'
-import Arrow from '@/assets/icons/Arrow.svg'
+import MainNav from '@/components/MainNav'
 
 import css from './SiteHeader.module.css'
 import cx from 'classnames'
@@ -23,13 +21,9 @@ export default function SiteHeader() {
       animate={{ opacity: 1 }}
       transition={{ duration: 1, delay: transitionDelay, ease: 'easeOut' }}
     >
-      { backButtonUrl && 
-        <Link href={backButtonUrl} className={css.BackButton}>
-          <Icon svg={Arrow} rotate="90deg" />
-        </Link>
-      }
-      <SiteLogo className={css.SiteLogo} />
-      <MainNav className={css.MainNav} />
+      {backButtonUrl && <BackButton url={backButtonUrl} />}
+      <SiteLogo />
+      <MainNav />
     </motion.header>
   )
 }

@@ -1,15 +1,15 @@
 import type { JSX, FC, SVGProps } from "react"
 import type { CaseStudyHero, CaseStudySummary, CaseStudyFeaturesBySkill } from "@/types"
 
-import BrowserFrame from "@/components/BrowserFrame"
+import Image from 'next/image'
 
 import HeroImage from "./HeroImage"
 
+import BrowserFrame from "@/components/BrowserFrame"
+import AnimatedImage from "@/components/AnimatedImage"
+
 import CaseStudyDeliverables from "@/work/components/CaseStudyDeliverables"
 import DevProcess from "./DevProcess"
-
-import Image from 'next/image'
-import AnimatedImage from "@/components/AnimatedImage"
 
 // summary image
 import summaryOldHp from '/public/images/work/jg-2010s/summary-old-hp-3.jpg'
@@ -25,7 +25,7 @@ import designFeature3_5 from '/public/images/work/jg-2010s/design-feature-redesi
 import designFeature4 from '/public/images/work/jg-2010s/design-feature-4.png'
 
 // dev images/icons
-import fullOfTables from '/public/images/work/jg-2010s/dev-full-of-tables.jpg'
+import fullOfTables from '/public/images/work/jg-2010s/dev-full-of-tables-2.jpg'
 import devIconPhp from '@/assets/icons/dev/php.svg'
 import devMySqlPhp from '@/assets/icons/dev/mysql.svg'
 import devIconCss from '@/assets/icons/dev/css.svg'
@@ -135,11 +135,10 @@ export const features: CaseStudyFeaturesBySkill = {
       </>,
       imagePosition: 'right',
       image: {
-        component: (
-          <AnimatedImage>
-            <Image src={designFeature1} alt="Redesigning japan-guide.com information architecture" />
-          </AnimatedImage>
-        ),
+        content: {
+          imageData: designFeature1,
+          alt: "Redesigning japan-guide.com information architecture",
+        },
       },
     },
     {
@@ -158,13 +157,11 @@ export const features: CaseStudyFeaturesBySkill = {
       imagePosition: 'left',
       image: {
         bgColor: '#EFF3F7',
-        justify: 'end',
         aspectRatio: '1 / 1',
-        component: (
-          <AnimatedImage>
-            <Image src={designFeature2} alt="Auditing all of japan-guide.com's design elements" />
-          </AnimatedImage>
-        ),
+        content: {
+          imageData: designFeature2,
+          alt: "Auditing all of japan-guide.com's design elements",
+        },
       },
     },
     {
@@ -183,25 +180,28 @@ export const features: CaseStudyFeaturesBySkill = {
       image: {
         bg: 'linear-gradient(to bottom, var(--surface-bg-primary), #ECF5FC)',
         mobileMarginBreakout: true,
-        component: (
-          <div className={css.RedesignCollage}>
-            <AnimatedImage className={css['jg2010s-redesign-img-1']}>
-              <Image src={designFeature3_1} alt="Early design sketches" />
-            </AnimatedImage>
-            <AnimatedImage className={css['jg2010s-redesign-img-2']}>
-              <Image src={designFeature3_2} alt="“Aquariums” page nationwide map design idea" />
-            </AnimatedImage>
-            <AnimatedImage className={css['jg2010s-redesign-img-3']}>
-              <Image src={designFeature3_3} alt="Miyajima page design idea" />
-            </AnimatedImage>
-            <AnimatedImage className={css['jg2010s-redesign-img-4']}>
-              <Image src={designFeature3_4} alt="“Autumn Leaves” page design idea" />
-            </AnimatedImage>
-            <AnimatedImage className={css['jg2010s-redesign-img-5']}>
-              <Image src={designFeature3_5} alt="Japanese History” timeline design idea" />
-            </AnimatedImage>
-          </div>
-        ),
+        aspectRatio: 'unset',
+        content: {
+          content: (
+            <div className={css.RedesignCollage}>
+              <AnimatedImage className={css['jg2010s-redesign-img-1']}>
+                <Image src={designFeature3_1} alt="Early design sketches" />
+              </AnimatedImage>
+              <AnimatedImage className={css['jg2010s-redesign-img-2']}>
+                <Image src={designFeature3_2} alt="“Aquariums” page nationwide map design idea" />
+              </AnimatedImage>
+              <AnimatedImage className={css['jg2010s-redesign-img-3']}>
+                <Image src={designFeature3_3} alt="Miyajima page design idea" />
+              </AnimatedImage>
+              <AnimatedImage className={css['jg2010s-redesign-img-4']}>
+                <Image src={designFeature3_4} alt="“Autumn Leaves” page design idea" />
+              </AnimatedImage>
+              <AnimatedImage className={css['jg2010s-redesign-img-5']}>
+                <Image src={designFeature3_5} alt="Japanese History” timeline design idea" />
+              </AnimatedImage>
+            </div>
+          ),
+        },
         caption: "Early design sketches and wireframes",
       },
     },
@@ -224,14 +224,10 @@ export const features: CaseStudyFeaturesBySkill = {
       imagePosition: 'left',
       image: {
         aspectRatio: 'unset',
-        component: (
-          <AnimatedImage>
-            <Image
-              src={designFeature4}
-              alt="New logo, typefaces, color palette, and iconography for japan-guide.com"
-            />
-          </AnimatedImage>
-        ),
+        content: {
+          imageData: designFeature4,
+          alt: "New logo, typefaces, color palette, and iconography for japan-guide.com",
+        },
       },
     },
   ],
@@ -248,11 +244,13 @@ export const features: CaseStudyFeaturesBySkill = {
         <p>I had my work cut out for me. And I had 3 months to get it done.</p>
       </>,
       image: {
-        component: (
-          <AnimatedImage>
-            <Image src={fullOfTables} alt="My god... it's full of <table>s" />
-          </AnimatedImage>
-        ),
+        content: {
+          imageData: fullOfTables,
+          alt: "MY GOD...IT'S FULL OF <TABLE>S",
+          justify: 'center',
+          align: 'center',
+          imageClassName: css.FullOfTables,
+        },
       },
     },
     { content: <DevProcess /> }

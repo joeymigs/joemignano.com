@@ -1,7 +1,5 @@
 import type { CaseStudyHero, CaseStudySummary, CaseStudyFeaturesBySkill } from "@/types"
 
-import Image from "next/image"
-
 import HeroImage from "./HeroImage"
 
 import CaseStudySummaryCta from "@/work/components/CaseStudySummaryCta"
@@ -21,7 +19,6 @@ import Arrow from "@/assets/icons/Arrow.svg"
 import css from "@/work/bookfinder/CaseStudy.module.css"
 import typo from "@/css/typography/Typography.module.css"
 import cx from "classnames"
-import AnimatedImage from "@/components/AnimatedImage"
 
 export const hero: CaseStudyHero = {
   title: <span className={typo.Underline}>Bookfinder</span>,
@@ -77,7 +74,9 @@ export const summary: CaseStudySummary = {
     <CaseStudySummaryCta>
       <Button
         variant="cta"
-        stretch style={{opacity: 0.5, '--_bg-color': '#8ebddf'} as React.CSSProperties}
+        disabled
+        stretch
+        style={{'--_bg-color': '#8ebddf'} as React.CSSProperties}
       >
         Try a demo <Icon svg={Arrow} rotate="225deg" />
       </Button>
@@ -114,12 +113,12 @@ export const features: CaseStudyFeaturesBySkill = {
       </>,
       image: {
         bgColor: '#DCEBFB',
-        type: "desktop",
-        component: (
-          <AnimatedImage>
-            <Image className={css.Screenshot} src={feature1Img} alt="Date picker feature" />
-          </AnimatedImage>
-        ),
+        content: {
+          type: 'screenshot',
+          imageData: feature1Img,
+          imageClassName: css.Screenshot,
+          alt: "Date picker feature",
+        }
       },
     },
     {
@@ -133,12 +132,12 @@ export const features: CaseStudyFeaturesBySkill = {
       </>,
       image: {
         bgColor: '#EDF1F1',
-        type: "desktop",
-        component: (
-          <AnimatedImage>
-            <Image className={css.Screenshot} src={feature2Img} alt="Search terms view" />
-          </AnimatedImage>
-        ),
+        content: {
+          type: 'screenshot',
+          imageData: feature2Img,
+          imageClassName: css.Screenshot,
+          alt: "Search terms view",
+        }
       },
     },
     {
@@ -151,12 +150,12 @@ export const features: CaseStudyFeaturesBySkill = {
       </>,
       image: {
         bgColor: '#F4F2FD',
-        type: "desktop",
-        component: (
-          <AnimatedImage>
-            <Image className={css.Screenshot} src={feature3Img} alt="Filtering and sorting" />
-          </AnimatedImage>
-        ),
+        content: {
+          type: 'screenshot',
+          imageData: feature3Img,
+          imageClassName: css.Screenshot,
+          alt: "Filtering and sorting",
+        }
       }
     },
     {
@@ -170,12 +169,12 @@ export const features: CaseStudyFeaturesBySkill = {
       </>,
       image: {
         bgColor: '#E8F5FE',
-        type: "desktop",
-        component: (
-          <AnimatedImage>
-            <Image className={css.Screenshot} src={feature4Img} alt="Search results details view" />
-          </AnimatedImage>
-        ),
+        content: {
+          type: 'screenshot',
+          imageData: feature4Img,
+          imageClassName: css.Screenshot,
+          alt: "Search results details view",
+        }
       },
     },
     {
@@ -187,12 +186,12 @@ export const features: CaseStudyFeaturesBySkill = {
       </>,
       image: {
         bgColor: '#2D4E69',
-        type: "desktop",
-        component: (
-          <AnimatedImage>
-            <Image className={cx(css.Screenshot, css.darkShadow)} src={feature5Img} alt="Dark mode" />
-          </AnimatedImage>
-        ),
+        content: {
+          type: 'screenshot',
+          imageData: feature5Img,
+          imageClassName: cx(css.Screenshot, css.darkShadow),
+          alt: "Dark mode",
+        },
       }
     },
   ],
@@ -223,16 +222,14 @@ export const features: CaseStudyFeaturesBySkill = {
       </>,
       image: {
         aspectRatio: 'unset',
-        component: (
-          <AnimatedImage>
-            <Image
-              src="/images/work/bookfinder/dev-tech-stack.svg"
-              alt="Bookfinder tech stack"
-              width="672"
-              height="617"
-            />
-          </AnimatedImage>
-        ),
+        content: {
+          imageSrc: '/images/work/bookfinder/dev-tech-stack.svg',
+          imageProps: {
+            width: 672,
+            height: 617,
+          },
+          alt: "Bookfinder tech stack",
+        },
       },
       imagePosition: 'right',
     },

@@ -1,0 +1,49 @@
+.Button {
+  --_btn-size: var(--space-600);
+  --_icon-size: var(--space-200);
+  --_inset-inline: var(--layout-viewport-padding);
+  --_margin: calc(var(--_icon-size) * -1);
+
+  position: absolute;
+
+  width: var(--_btn-size);
+  height: var(--_btn-size);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  border-radius: 50%;
+  color: inherit;
+
+  cursor: pointer;
+
+  transition: background-color 0.15s cubic-bezier(.52, .01, .16, 1);
+
+  &:hover {
+    background-color: light-dark(
+      var(--surface-bg-secondary),
+      var(--surface-bg-secondary-inverse)
+    );
+  }
+  &:active {
+    color: light-dark(var(--surface-link), var(--surface-link-mid)) !important;
+  }
+
+  &.left {
+    left: var(--_inset-inline);
+    margin-left: var(--_margin);
+  }
+  &.right {
+    right: var(--_inset-inline);
+    margin-right: var(--_margin);
+  }
+
+  @media( width >= 960px ) {
+    --_icon-size: var(--20px);
+    --_inset-inline: var(--_icon-size);
+    --_margin: 0;
+    
+    top: var(--_icon-size);
+  }
+}

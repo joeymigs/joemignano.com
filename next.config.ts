@@ -2,6 +2,8 @@ import type { NextConfig } from "next"
 import type { RuleSetRule } from "webpack"
 
 const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  
   // SVGR config (converts *.svg imports to React components)
   webpack(config) {
     const fileLoaderRule = config.module.rules.find(

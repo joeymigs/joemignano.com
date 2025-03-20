@@ -2,20 +2,16 @@ import type {
   CaseStudyHero,
   CaseStudySummary,
   CaseStudyFeaturesBySkill,
-  CaseStudyFeatureImageSlide,
+  CaseStudyFeatureSlide,
 } from "@/types"
 
 import Link from "next/link"
-import Image from "next/image"
 
 import HeroImage from "./HeroImage"
 
 import CaseStudyDeliverables from "@/work/components/CaseStudyDeliverables"
 import CaseStudySummaryCta from "@/work/components/CaseStudySummaryCta"
 import CaseStudyDevIcons from "@/work/components/CaseStudyDevIcons"
-import PhoneFrame, { PhoneFrameProps } from "@/components/PhoneFrame"
-import BrowserFrame from "@/components/BrowserFrame"
-import Video from "@/components/Video"
 
 import MobileBg1 from "/public/images/work/jg-2020s/mobile-bg-shikoku.jpg"
 import MobileBg2 from "/public/images/work/jg-2020s/mobile-bg-festivals.jpg"
@@ -34,7 +30,7 @@ import NavMenuBg2 from '/public/images/work/jg-2020s/nav-menu-bg-2.jpg'
 
 import JgDocsImg1 from '/public/images/work/jg-2020s/JgDocs-1.jpg'
 import JgDocsImg2 from '/public/images/work/jg-2020s/JgDocs-2.jpg'
-import JgDocsImg4 from '/public/images/work/jg-2020s/JgDocs-3.jpg'
+import JgDocsImg3 from '/public/images/work/jg-2020s/JgDocs-3.jpg'
 
 import DevIconPhp from '@/assets/icons/dev/php.svg'
 import DevIconCss from '@/assets/icons/dev/css.svg'
@@ -46,111 +42,124 @@ import Icon from "@/components/Icon"
 import Arrow from "@/assets/icons/Arrow.svg"
 
 import typo from '@/css/typography/Typography.module.css'
+import cx from "classnames"
 
-const frameProps: Partial<PhoneFrameProps> = {
-  shadow: 300,
-  animate: true,
-  viewportOptions: { amount: 0.1 },
-  variants: {
-    animate: { transition: { duration: 1.67 }},
-    exit: { opacity: 0, y: 24, transition: { duration: 0.33 }},
-  },
-}
-
-const goingMobileSlides: CaseStudyFeatureImageSlide[] = [
+const goingMobileSlides: CaseStudyFeatureSlide[] = [
   {
     bgImage: MobileBg1,
-    component: (
-      <PhoneFrame {...frameProps}>
-        <Image src={ShikokuImg} alt="Shikoku regional page, mobile version" />
-      </PhoneFrame>
-    ),
+    content: {
+      type: 'phone',
+      imageData: ShikokuImg,
+      alt: "Shikoku regional page, mobile version",
+    },
+    preloadBgImage: MobileBg1,
+    preloadMainAsset: ShikokuImg,
   },
   {
     bgImage: MobileBg2,
-    component: (
-      <PhoneFrame {...frameProps} shimColor="#ffffff">
-        <Image src={FestivalsImg} alt="Festivals page, mobile version" />
-      </PhoneFrame>
-    ),
+    content: {
+      type: 'phone',
+      imageData: FestivalsImg,
+      alt: "Festivals page, mobile version",
+      frameProps: { shimColor: "#ffffff" },
+    },
+    preloadBgImage: MobileBg2,
+    preloadMainAsset: FestivalsImg,
   },
   {
     bgImage: MobileBg3,
-    component: (
-      <PhoneFrame {...frameProps}>
-        <Image src={HomeRegionsImg} alt="Regions of Japan, Homepage, mobile version" />
-      </PhoneFrame>
-    ),
+    content: {
+      type: 'phone',
+      imageData: HomeRegionsImg,
+      alt: "Regions of Japan, Homepage, mobile version",
+    },
+    preloadBgImage: MobileBg3,
+    preloadMainAsset: HomeRegionsImg,
   },
   {
     bgImage: MobileBg4,
-    component: (
-      <PhoneFrame {...frameProps} shimColor="#ffffff">
-        <Image src={BusTablesImg} alt="Bus timetables, mobile version" />
-      </PhoneFrame>
-    ),
+    content: {
+      type: 'phone',
+      imageData: BusTablesImg,
+      alt: "Bus timetables, mobile version",
+      frameProps: { shimColor: "#ffffff" },
+    },
+    preloadBgImage: MobileBg4,
+    preloadMainAsset: BusTablesImg,
   },
   {
     bgImage: MobileBg5,
-    component: (
-      <PhoneFrame {...frameProps} shimColor="#ffffff">
-        <Image src={BookingImg} alt="Booking.com listings integration, mobile version" />
-      </PhoneFrame>
-    ),
+    content: {
+      type: 'phone',
+      imageData: BookingImg,
+      alt: "Booking.com listings integration, mobile version",
+      frameProps: { shimColor: "#ffffff" },
+    },
+    preloadBgImage: MobileBg5,
+    preloadMainAsset: BookingImg,
   },
 ]
 
-const navMenuSlides: CaseStudyFeatureImageSlide[] = [
+const navMenuSlides: CaseStudyFeatureSlide[] = [
   {
     bgImage: NavMenuBg1,
-    component: (
-      <PhoneFrame {...frameProps}>
-        <Video
-          src="/images/work/jg-2020s/explore-menu.mp4"
-          poster="/images/work/jg-2020s/explore-menu-poster.jpg"
-          alt="Explore Menu in action"
-        />
-      </PhoneFrame>
-    ),
-    caption: <><strong>Early attempts:</strong> “Explore Menu,” circa 2019–2022</>,
+    content: {
+      type: 'phone',
+      videoSrc: "/images/work/jg-2020s/explore-menu.mp4",
+      videoProps: {
+        poster: "/images/work/jg-2020s/explore-menu-poster.jpg",
+        width: 800,
+        height: 1600,
+      },
+      alt: "Explore Menu in action",
+    },
+    preloadBgImage: NavMenuBg1,
+    preloadMainAsset: "/images/work/jg-2020s/explore-menu.mp4",
+    caption: <><strong>Early Solution:</strong> “Explore Menu,” circa 2019–2022</>,
   },
   {
-    // bgColor: "#f4f9ff",
     bgImage: NavMenuBg2,
-    component: (
-      <PhoneFrame {...frameProps}>
-        <Video
-          src="/images/work/jg-2020s/new-section-nav.mp4"
-          poster="/images/work/jg-2020s/ExploreMenu-mobile.jpg"
-          alt="New section nav menus in action"
-        />
-      </PhoneFrame>
-    ),
-    caption: <><strong>Latest solution:</strong> New section & site navigation, 2023–</>,
+    content: {
+      type: 'phone',
+      videoSrc: "/images/work/jg-2020s/new-section-nav.mp4",
+      videoProps: {
+        poster: "/images/work/jg-2020s/ExploreMenu-mobile.jpg",
+        width: 800,
+        height: 1600,
+      },
+      alt: "New section nav menus in action",
+      frameProps: { shimColor: "var(--surface-bg-primary)" },
+    },
+    preloadBgImage: NavMenuBg2,
+    preloadMainAsset: "/images/work/jg-2020s/new-section-nav.mp4",
+    caption: <><strong>Latest Solution:</strong> New section & site navigation, 2023–Present</>,
   }
 ]
 
-const jgDocsSlides: CaseStudyFeatureImageSlide[] = [
+const jgDocsSlides: CaseStudyFeatureSlide[] = [
   {
-    component: (
-      <BrowserFrame {...frameProps}>
-        <Image src={JgDocsImg1} alt="japan-guide.com's JG Docs" />
-      </BrowserFrame>
-    ),
+    content: {
+      type: 'browser',
+      imageData: JgDocsImg1,
+      alt: "japan-guide.com's JG Docs 'Images' page",
+    },
+    preloadMainAsset: JgDocsImg1,
   },
   {
-    component: (
-      <BrowserFrame  {...frameProps}>
-        <Image src={JgDocsImg2} alt="japan-guide.com's JG Docs" />
-      </BrowserFrame>
-    ),
+    content: {
+      type: 'browser',
+      imageData: JgDocsImg2,
+      alt: "japan-guide.com's JG Docs 'Icons' page",
+    },
+    preloadMainAsset: JgDocsImg2,
   },
   {
-    component: (
-      <BrowserFrame  {...frameProps}>
-        <Image src={JgDocsImg4} alt="japan-guide.com's JG Docs" />
-      </BrowserFrame>
-    ),
+    content: {
+      type: 'browser',
+      imageData: JgDocsImg3,
+      alt: "japan-guide.com's JG Docs 'Colors' page",
+    },
+    preloadMainAsset: JgDocsImg3,
   },
 ]
 
@@ -198,7 +207,7 @@ export const summary: CaseStudySummary = {
         },
         {
           skill: [{ type: 'design', name: 'Design' }, { type: 'dev', name: 'Dev' }],
-          desc: <strong>Modern site-wide design system</strong>,
+          desc: <strong>Comprehensive design system & docs</strong>,
         },
       ]} />,
       isProse: false,
@@ -209,6 +218,11 @@ export const summary: CaseStudySummary = {
       <Button href="https://www.japan-guide.com" target="_blank" rel="noopener" variant="cta" stretch>
         Visit japan-guide.com <Icon svg={Arrow} rotate="225deg" />
       </Button>
+      <div style={{display: 'flex', alignItems: 'center', gap: 'var(--space-75)'}}>
+        <span className={cx(typo.BodyS, typo.Prose)} style={{fontWeight: 'var(--font-weight-medium)'}}>
+          🔴&nbsp; See the live site!
+        </span>
+      </div>
     </CaseStudySummaryCta>
   ),
 }
@@ -229,7 +243,6 @@ export const features: CaseStudyFeaturesBySkill = {
       image: {
         bgColor: '#DCEBFB',
         verticalOnMobile: true,
-        type: 'mobile',
         slides: goingMobileSlides,
       }
     },
@@ -249,7 +262,6 @@ export const features: CaseStudyFeaturesBySkill = {
       image: {
         bgColor: "#e5f1ff",
         verticalOnMobile: true,
-        type: 'mobile',
         slides: navMenuSlides,
       },
     },
@@ -267,7 +279,6 @@ export const features: CaseStudyFeaturesBySkill = {
       </>,
       image: {
         bgColor: '#F4F2FD',
-        type: 'desktop',
         slides: jgDocsSlides,
       }
     },
@@ -290,7 +301,6 @@ export const features: CaseStudyFeaturesBySkill = {
       image: {
         bgColor: '#DDFEF5',
         verticalOnMobile: true,
-        type: 'mobile',
         slides: goingMobileSlides,
         additionalContent: (
           <CaseStudyDevIcons icons={[
@@ -314,7 +324,6 @@ export const features: CaseStudyFeaturesBySkill = {
       image: {
         bgColor: '#e8fef8',
         verticalOnMobile: true,
-        type: 'mobile',
         slides: navMenuSlides,
         additionalContent: (
           <CaseStudyDevIcons
@@ -342,7 +351,6 @@ export const features: CaseStudyFeaturesBySkill = {
       </>,
       image: {
         bgColor: '#FDF2F9',
-        type: 'desktop',
         slides: jgDocsSlides,
         additionalContent: <CaseStudyDevIcons icons={[
           <DevIconSass key="sass-icon" />, <DevIconCss key="css-icon" />,

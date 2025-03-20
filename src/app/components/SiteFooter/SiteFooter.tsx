@@ -16,12 +16,12 @@ import cx from 'classnames'
 export default function SiteFooter() {
   const { scrollYProgress } = useScroll()
 
-  const opacity = useTransform(scrollYProgress, [0.95, 1], [0, 1])
-  const scale = useTransform(scrollYProgress, [0.9, 1], [0.95, 1])
-  const y = useTransform(scrollYProgress, [0.9, 1], [64, 0])
+  const opacity = useTransform(scrollYProgress, [0.85, 1], [0, 1])
+  const scale = useTransform(scrollYProgress, [0.8, 1], [0.95, 1])
+  const y = useTransform(scrollYProgress, [0.8, 1], [64, 0])
 
-  const bottomOpacity = useTransform(scrollYProgress, [1, 0.975], [1, 0])
-  const bottomY = useTransform(scrollYProgress, [1, 0.975], [0, 8])
+  const bottomOpacity = useTransform(scrollYProgress, [1, 0.9], [1, 0])
+  const bottomY = useTransform(scrollYProgress, [1, 0.9], [0, 8])
 
   return (
     <footer className={css.Wrap} id="contact">

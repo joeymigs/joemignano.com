@@ -1,0 +1,8 @@
+.BackButton {
+  --icon-color: var(--text-tertiary);
+  --icon-size: var(--16px);
+
+  @media( width >= 960px ) {
+    --icon-size: var(--20px);
+  }
+}

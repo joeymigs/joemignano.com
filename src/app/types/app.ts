@@ -1,5 +1,9 @@
 import type { ReactNode } from "react"
-import type { StaticImageData } from "next/image"
+import type { StaticImageData, ImageProps } from "next/image"
+
+import type { PhoneFrameProps } from "@/components/PhoneFrame";
+import type { BrowserFrameProps } from "@/components/BrowserFrame";
+import type { VideoProps } from "@/components/Video/Video";
 
 /* Pages */
 export type PageData = {
@@ -37,27 +41,61 @@ export type CaseStudySummary = {
 }
 
 /* Case Study Features */
-export type CaseStudyFeatureImage = {
-  type?: 'mobile' | 'desktop'; 
+export type CaseStudyFeatureFigure = {
   bgColor?: `#${string}`;
   bg?: string;
   bgImage?: StaticImageData;
   verticalOnMobile?: boolean;
   caption?: ReactNode;    
   additionalContent?: ReactNode;
-  justify?: 'start' | 'center' | 'end';
   aspectRatio?: string;
   mobileMarginBreakout?: boolean;
 } & (
-  | { slides: CaseStudyFeatureImageSlide[]; component?: never }
-  | { component: ReactNode; slides?: never }
-);
+  | { slides: CaseStudyFeatureSlide[]; content?: never; }
+  | { content: CaseStudyFeatureFigureContent; slides?: never; }
+)
 
-export type CaseStudyFeatureImageSlide = {
-  component: ReactNode;
+export type CaseStudyFeatureFigureType = 'phone' | 'browser' | 'screenshot';
+
+export type CaseStudyFeatureImage = {
+  type?: CaseStudyFeatureFigureType;
+  alt: string;
+  frameProps?: Partial<PhoneFrameProps | BrowserFrameProps>;
+  imageClassName?: string;
+  imageProps?: Omit<Partial<ImageProps>, 'src' | 'alt'>;
+  justify?: 'start' | 'center' | 'end';
+  align?: 'start' | 'center' | 'end';
+} & (
+  | { imageData: StaticImageData; imageSrc?: never }
+  | { imageSrc: string; imageData?: never }
+)
+
+export type CaseStudyFeatureVideo = {
+  type?: CaseStudyFeatureFigureType;
+  alt: string;
+  frameProps?: Partial<PhoneFrameProps | BrowserFrameProps>;
+  videoSrc: string;
+  videoProps?: Omit<Partial<VideoProps>, 'src' | 'alt'>;
+  justify?: 'start' | 'center' | 'end';
+  align?: 'start' | 'center' | 'end';
+}
+
+export type CaseStudyFeatureCustomFigure = {
+  content: ReactNode;
+};
+
+export type CaseStudyFeatureFigureContent =
+  | CaseStudyFeatureImage
+  | CaseStudyFeatureVideo
+  | CaseStudyFeatureCustomFigure;
+
+export type CaseStudyFeatureSlide = {
+  content: CaseStudyFeatureFigureContent;
   bgColor?: `#${string}`;
   bg?: string;
   bgImage?: StaticImageData;
+  preloadBgImage?: StaticImageData;
+  preloadMainAsset?: StaticImageData | string;
   caption?: ReactNode;
 }
 
@@ -66,7 +104,7 @@ export type CaseStudyFeature = {
   heading: ReactNode;
   text: ReactNode;
   textAlign?: 'center' | 'top';
-  image: CaseStudyFeatureImage;
+  image: CaseStudyFeatureFigure;
   imagePosition?: 'left' | 'right' | 'bottom';
 }
 export type CaseStudyFeatureContentOnly = {

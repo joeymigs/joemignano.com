@@ -4,6 +4,8 @@ import { type CSSProperties, useEffect, useRef, useState } from 'react'
 
 import Image, { type StaticImageData } from 'next/image'
 
+import { motion } from 'motion/react'
+
 import css from './BeforeAfter.module.css'
 import grid from '@/css/grid/Grid.module.css'
 import typo from '@/css/typography/Typography.module.css'
@@ -92,13 +94,17 @@ export default function BeforeAfter({
           { callouts?.length > 0 &&
             <div className={cx(css.Callouts, {[css.hide]: image === beforeImage})}>
               {callouts.map(({ text, top, side, length }, i) => (
-                <div
+                <motion.div
                   key={i}
                   className={cx(css.Callout, css[side])}
                   style={{ top, ['--length']: length } as CSSProperties }
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.67 }}
+                  viewport={{ once: true }}
                 >
                   <span>{text}</span>
-                </div>
+                </motion.div>
               ))}
             </div> }
         </div>

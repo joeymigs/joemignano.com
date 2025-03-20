@@ -13,7 +13,7 @@
     --icon-size: var(--_icon-size);
 
     &:hover {
-      --icon-color: var(--text-link-inverse);
+      --icon-color: var(--surface-link-inverse);
     }
   }
 }

@@ -1,5 +1,7 @@
 import type { Skill } from "@/types"
 
+import { Fragment } from "react"
+
 import Icon from "@/components/Icon"
 import Check from "@/assets/icons/CheckIcon.svg"
 
@@ -31,14 +33,14 @@ export default function SkillPills({
   return (
     <ul className={cx(css.Pills, className)}>
       {skills.map((skill, i) => (
-        <>
-          <li key={`skill-${i}`}>
+        <Fragment key={`skill-${i}`}>
+          <li>
             <SkillPill skill={skill} />
           </li>
           {delimiter && i < skills.length - 1 && (
             <li className={css.Delimiter} key={`delimiter-${i}`}>{delimiter}</li>
           )}
-        </>
+        </Fragment>
       ))}
     </ul>
   )
@@ -48,10 +50,8 @@ export function SkillPill({ skill, isCheck }: SkillPillProps) {
   const { type, name } = skill as Skill;
 
   return (
-    <span className={cx(css.Pill, css[type], {[css.check]: isCheck})}>
-      { isCheck
-        ? <Icon svg={Check} className={css.Check} />
-        : <span>{name}</span> }
+    <span className={cx(css.Pill, css[type], {[css.Check]: isCheck})}>
+      { isCheck ? <Icon svg={Check} /> : <span>{name}</span> }
     </span>
   )
 }

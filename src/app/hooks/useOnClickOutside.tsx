@@ -8,7 +8,6 @@ export function useOnClickOutside<T extends HTMLElement = HTMLElement>(
     const listener = (event: MouseEvent) => {
       const target = event.target as Node
 
-      // Do nothing if the target is not connected element with document
       if (!target || !target.isConnected) return
 
       const isOutside = Array.isArray(ref)

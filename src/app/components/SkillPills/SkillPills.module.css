@@ -48,15 +48,16 @@
       -webkit-text-fill-color: transparent;
     }
   }
-  &.check {
-    width: var(--space-400);
-    height: var(--space-400);
-    border-radius: 50%;
-  }
 }
 .Check {
   flex: none;
-  font-size: 0.83333333em;
+
+  font-size: 0.75em;
+
+  width: var(--space-400);
+  height: var(--space-400);
+  
+  border-radius: 50%;
 }
 .Delimiter {
   color: var(--text-tertiary);

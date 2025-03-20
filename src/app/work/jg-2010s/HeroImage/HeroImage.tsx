@@ -21,7 +21,7 @@ export default function HeroImage() {
         }}
         animateOnLoad
       >
-        <Image src={before} alt="japan-guide.com: Before" />
+        <Image src={before} alt="japan-guide.com: Before" priority />
       </BrowserFrame>
       <BrowserFrame
         wrapClass={css.After}
@@ -38,6 +38,7 @@ export default function HeroImage() {
             objectPosition: 'top',
             objectFit: 'cover',
           }}
+          priority
         />
       </BrowserFrame>
     </div>

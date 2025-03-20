@@ -43,6 +43,7 @@
   flex-direction: column;
 
   border-radius: var(--_inner-border-radius);
+  background: var(--surface-bg-primary-inverse);
 
   overflow: clip;
 }

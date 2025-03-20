@@ -96,3 +96,8 @@
     .jg2010s-redesign-img-5 { top: 88%; left: 10%; rotate: -2.4deg; width: 33.33%; }
   }
 }
+
+.FullOfTables {
+  max-width: min(100%, 560px);
+  margin-inline: auto;
+}

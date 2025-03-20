@@ -18,7 +18,7 @@ export default function HeroImage() {
         variants={{ animate: { transition: { delay: 0.33 }}}}
         animateOnLoad
       >
-        <Image src={desktopImage} alt="japan-guide.com, Mt. Fuji Destination page" />
+        <Image src={desktopImage} alt="japan-guide.com, Mt. Fuji Destination page" priority />
       </BrowserFrame>
       <div className={cx(css.MobileContainer, grid.SiteGrid)}>
         <PhoneFrame 
@@ -29,7 +29,7 @@ export default function HeroImage() {
           variants={{ animate: { transition: { delay: 1.33 }}}}
           animateOnLoad
         >
-          <Image src={mobileImage} alt="japan-guide.com, Shimokita Peninsula page" />
+          <Image src={mobileImage} alt="japan-guide.com, Shimokita Peninsula page" priority />
         </PhoneFrame>
       </div>
     </div>

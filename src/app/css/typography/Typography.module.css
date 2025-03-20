@@ -145,26 +145,22 @@
 
   /* Text links */
   & a {
-    color: var(--text-link);
     text-decoration: underline;
-    text-decoration-thickness: 0.05em;
+    text-decoration-thickness: 0.1em;
     text-underline-offset: 0.05em;
+    text-decoration-color: var(--surface-link);
   }
 
   /* Modifiers */
   &.Inverse {
     --_color: var(--color, var(--text-primary-inverse));
-
-    & a {
-      color: var(--text-link-inverse);
-    }
   }
 }
 
 .Prose a,
 .Hover .Link,
 .Underline {
-  --_underline-color:  var(--underline-color, hsl(from var(--color-green-400) h s l / 0.5));
+  --_underline-color:  var(--underline-color, hsl(from var(--surface-link-inverse) h s l / 0.5));
   --_underline-height: var(--underline-height, 0.7ex);
   --_underline-offset: var(--underline-offset, 0em);
   --_underline-easing: var(--underline-easing, cubic-bezier(.52, .01, .16, 1));

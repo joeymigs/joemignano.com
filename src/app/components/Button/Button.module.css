@@ -61,7 +61,7 @@
     --_padding-x: var(--space-200);
     --_padding-y: var(--space-150);
 
-    --_bg-color: var(--color-neutral-100);
+    --_bg-color: var(--surface-bg-secondary);
     --_border-radius: var(--border-radius-ml);
     
     --_font-size: var(--font-size-body-m);
@@ -155,6 +155,22 @@
     --_font-width: var(--font-width-expanded);
     --_height: var(--space-800);
     --_shadow: 0px 4px 8px 0px rgba(66, 76, 85, 0.16);
+
+    transition: scale 0.125s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      scale: 0.98;
+    }
+    &:active {
+      scale: 0.955;
+      transition: scale 0.075s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &[disabled],
+    &[data-disabled] {
+      opacity: 0.5;
+      pointer-events: none;
+    }
 
     @media( width >= 960px ) {
       --_height: var(--space-1000);

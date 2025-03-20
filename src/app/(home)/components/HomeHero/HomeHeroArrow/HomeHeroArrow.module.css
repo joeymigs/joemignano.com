@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
 
-  background-color: var(--color-neutral-800);
+  background-color: var(--text-secondary);
   width: var(--space-700);
   height: var(--space-700);
   border-radius: 50%;

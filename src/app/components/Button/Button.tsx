@@ -16,6 +16,7 @@ type ButtonProps = PropsWithChildren<{
   rel?: string;
   stretch?: boolean;
   inline?: boolean;
+  disabled?: boolean;
   className?: string;
   style?: React.CSSProperties;
   icon?: FC<SVGProps<SVGSVGElement>>;
@@ -29,6 +30,7 @@ export default function Button({
   rel,
   stretch,
   inline,
+  disabled,
   className,
   style,
   icon,
@@ -59,7 +61,8 @@ export default function Button({
           rel={rel} 
           className={classes} 
           style={style}
+          data-disabled={disabled}
         >{content}</Link>
-      : <button className={classes} style={style}>{content}</button>
+      : <button className={classes} style={style} disabled={disabled}>{content}</button>
   )
 }

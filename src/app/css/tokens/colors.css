@@ -61,8 +61,6 @@
   --text-secondary-inverse: var(--color-neutral-100);
   --text-tertiary-inverse: var(--color-neutral-200);
   --text-disabled-inverse: var(--color-neutral-400);
-  --text-link: var(--color-green-700);
-  --text-link-inverse: var(--color-green-400);
   --text-accent-design: var(--color-blue-800);
   --text-accent-dev: var(--color-green-800);
 
@@ -70,10 +68,12 @@
   --surface-bg-primary: var(--color-neutral-white);
   --surface-bg-secondary: var(--color-neutral-200);
   --surface-bg-primary-inverse: var(--color-neutral-900);
-  --surface-bg-secondary-inverse: var(--color-green-900);
+  --surface-bg-secondary-inverse: var(--color-neutral-700);
   --surface-accent-design: var(--color-blue-100);
   --surface-accent-dev: var(--color-green-100);
   --surface-link: var(--color-green-600);
+  --surface-link-mid: var(--color-green-500);
+  --surface-link-inverse: var(--color-green-400);
 
   /* Content-specific Colors */
   --case-study-bg-bookfinder: #fafbfd;

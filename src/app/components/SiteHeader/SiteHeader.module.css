@@ -22,34 +22,11 @@
     color-scheme: dark;
   }
 }
-.SiteLogo {
-  position: absolute;
-  inset-inline: 0;
-  margin-inline: auto;
-}
-.MainNav {
-  margin-inline-start: auto;
-}
-.BackButton {
-  color: var(--text-tertiary);
-  font-size: var(--16px);
-}
 
-@media( width < 960px ) {
-  .MainNav {
-    height: var(--14px);
-  }
-}
 @media( width >= 960px ) {
   .Wrap {
     --_padding-y: var(--space-300);
 
     height: calc((var(--_padding-y) * 2) + var(--space-500));
-  }
-  
-  .BackButton {
-    position: relative;
-    top: calc(var(--space-50) * -1);
-    font-size: var(--20px);
   }
 }

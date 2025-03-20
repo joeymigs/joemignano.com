@@ -1,6 +1,10 @@
 .Logo {
   --logo-height: var(--20px);
   
+  position: absolute;
+  inset-inline: 0;
+  margin-inline: auto;
+  
   width: fit-content;
 
   & svg {

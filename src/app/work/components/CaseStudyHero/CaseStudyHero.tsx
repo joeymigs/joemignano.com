@@ -15,10 +15,10 @@ export default function CaseStudyHero({ title, desc, skills, image }: CaseStudyH
       <div className={cx(grid.SiteGrid, layout.Main, css.InnerWrap)}>
         <header className={cx(css.Header, grid['xl--Col-3-10'])}>
           <SkillPills skills={skills} className={css.SkillPills} delimiter="+" animate />
-          <h1 className={cx(typo.HeadingL, typo.Pretty, css.Title)}>
+          <h1 className={cx(typo.HeadingL, typo.Balance, css.Title)}>
             <AnimatedText animateOnLoad>{title}</AnimatedText>
           </h1>
-          <p className={cx(typo.BodyL, typo.Pretty, css.Desc)}>
+          <p className={cx(typo.BodyL, typo.Balance, css.Desc)}>
             <AnimatedText
               animateOnLoad
               wrapVariants={{ animate: { transition: { delayChildren: 0.1 }}}}

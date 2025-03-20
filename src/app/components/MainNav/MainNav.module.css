@@ -1,17 +1,17 @@
 .Wrap {
   --_dropdown-padding: var(--space-200);
   --_bg-color: light-dark(var(--surface-bg-primary), var(--surface-bg-primary-inverse));
+  --_menu-height: var(--space-200);
+
+  height: var(--_menu-height);
+
+  margin-inline-start: auto;
 }
 
 .Trigger {
-  position: relative;
-
-  display: flex;
-  color: inherit;
-
-  cursor: pointer;
-
-  z-index: 1;
+  /* equalize top alignment with other site header elements */
+  margin-top: calc(var(--_menu-height) * -1);
+  z-index: 1; /* keep on top */
 }
 .X {
   display: none !important;
@@ -58,34 +58,6 @@
 }
 
 @media( width < 960px ) {
-  .Trigger {
-    --_btn-size: var(--space-600);
-    --_icon-size: var(--space-200);
-
-    position: absolute;
-    right: var(--layout-viewport-padding);
-
-    width: var(--_btn-size);
-    height: var(--_btn-size);
-
-    margin: calc(var(--_icon-size) * -1)
-            calc(var(--_icon-size) * -1)
-            calc(var(--_icon-size) / 2)
-            0;
-
-            
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    border-radius: 50%;
-
-    transition: background-color 0.15s cubic-bezier(.52, .01, .16, 1);
-
-    &:hover {
-      background-color: hsl(from var(--surface-bg-secondary) h s l / 0.067);
-    }
-  }
   .MenuWrap {
     --font-size: var(--40px);
     --line-height: var(--space-300);
@@ -124,10 +96,13 @@
   .Open {
     .Trigger {
       background-color: var(--surface-bg-secondary);
+      color: var(--text-primary);
+
+      &:active {
+        color: var(--surface-link) !important; /* darker against white bg */
+      }
     }
     .X {
-      --icon-color: var(--text-primary);
-
       display: flex !important;
     }
     .Hamburger {

@@ -1,34 +1,42 @@
 "use client"
 
-import { CSSProperties, useCallback, useEffect, useRef } from "react"
+import type { CSSProperties, MediaHTMLAttributes } from "react"
+
+import { useCallback, useEffect, useRef } from "react"
 
 import useIsVisible from "@/hooks/useIsVisible"
 
 import css from "./Video.module.css"
 
-type VideoProps = {
+export type VideoProps = {
   src: string
+  height?: number
+  width?: number
   type?: string
   poster?: string
   alt?: string
   style?: CSSProperties
+  preload?: MediaHTMLAttributes<HTMLVideoElement>["preload"]
+  autoPlay?: MediaHTMLAttributes<HTMLVideoElement>["autoPlay"]
+  lazyPlay?: boolean
   lazyOptions?: IntersectionObserverInit
 }
 
 export default function Video({
   src,
+  height,
+  width,
   type = "video/mp4",
   poster,
   style,
   alt,
+  preload = "auto",
+  autoPlay = false,
+  lazyPlay = true,
   lazyOptions,
 }: VideoProps) {
   const { isVisible, targetRef } = useIsVisible<HTMLDivElement>({
-    options: {
-      // rootMargin: "200px",
-      threshold: 0.33,
-      ...lazyOptions,
-    }
+    options: { threshold: 0.33, ...lazyOptions }
   })
 
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -52,20 +60,22 @@ export default function Video({
   }, [])
 
   useEffect(() => {
-    if( isVisible )
-      startVideo()
-    else
-      stopVideo()
-  }, [isVisible, startVideo, stopVideo])
+    if( autoPlay || !lazyPlay ) return
+
+    if( isVisible ) { startVideo() }
+    else { stopVideo() }
+  }, [isVisible, startVideo, stopVideo, lazyPlay, autoPlay])
 
   return (
     <div ref={targetRef} className={css.Wrap}>
       <video
+        height={height}
+        width={width}
         ref={videoRef}
         loop
         muted
-        autoPlay={false}
-        preload="none"
+        autoPlay={autoPlay}
+        preload={preload}
         playsInline
         poster={poster}
         aria-label={alt}

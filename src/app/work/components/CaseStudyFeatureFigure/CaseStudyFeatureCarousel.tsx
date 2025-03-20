@@ -1,16 +1,24 @@
 "use client"
 
-import type { CaseStudyFeatureImageSlide } from '@/types'
+import type { CSSProperties } from 'react'
+import type { CaseStudyFeatureSlide } from '@/types'
 
-import { useState, type CSSProperties } from 'react'
-
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 
+import { getNextIndex, getPrevIndex } from '@/util/getIndex'
+
+import useIsVisible from '@/hooks/useIsVisible'
+import usePrerenderSlideAssets from './usePrerenderSlideAssets'
+
 import Image from 'next/image'
+
+import CaseStudyFeatureFigureContent from './CaseStudyFeatureFigureContent'
+
 import Icon from '@/components/Icon'
 import Chevron from '@/assets/icons/Chevron.svg'
 
-import css from './CaseStudyFeatureImage.module.css'
+import css from './CaseStudyFeatureFigure.module.css'
 import typo from '@/css/typography/Typography.module.css'
 import cx from 'classnames'
 
@@ -25,34 +33,30 @@ const captionVariants = {
   exit: { opacity: 0, transition: { duration: 0.33 } }
 }
 
-type CaseStudyFeatureImageCarouselProps = {
-  slides: CaseStudyFeatureImageSlide[]
+type CaseStudyFeatureCarouselProps = {
+  slides: CaseStudyFeatureSlide[]
   contentWrapClasses?: string
 }
 
-export default function CaseStudyFeatureImageCarousel({
-  slides,
-  contentWrapClasses,
-}: CaseStudyFeatureImageCarouselProps) {
+export default function CaseStudyFeatureCarousel({ slides }: CaseStudyFeatureCarouselProps) {
+  const { isVisible, targetRef } = useIsVisible<HTMLDivElement>({
+    options: { threshold: 0.1, rootMargin: '100% 0px 0px 0px' },
+  })
+
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const currentSlide = slides[currentIndex]
 
-  const bgStyles = {['--bg']: currentSlide.bg || currentSlide.bgColor || ''} as CSSProperties
-  const bgImage = currentSlide.bgImage
-  const component = currentSlide.component
-  const caption = currentSlide.caption
+  const { bgImage, content, caption, bg, bgColor } = currentSlide
+  const bgStyles = { ['--bg']: bg || bgColor || '' } as CSSProperties
+
+  const handlePrevSlide = () => setCurrentIndex((prev) => getPrevIndex(prev, slides))
+  const handleNextSlide = () => setCurrentIndex((prev) => getNextIndex(prev, slides))
+
+  const prerenderedAssets = usePrerenderSlideAssets(slides, currentIndex)
   
-  const handleNextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % slides.length);
-  }
-
-  const handlePrevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length)
-  }
-
   return (
-    <div className={css.BgWrap} style={bgStyles}>
+    <div className={css.BgWrap} style={bgStyles} ref={targetRef}>
       <AnimatePresence>
         {bgImage && (
           <motion.div
@@ -66,9 +70,8 @@ export default function CaseStudyFeatureImageCarousel({
             <Image src={bgImage} alt="" />
           </motion.div>
         )}
-        <div key={`content-${currentIndex}`} className={contentWrapClasses}>
-          {component}
-        </div>
+        
+        <CaseStudyFeatureFigureContent {...content} key={`content-${currentIndex}`} />
 
         {caption && (
           <motion.div
@@ -100,6 +103,8 @@ export default function CaseStudyFeatureImageCarousel({
           <Icon svg={Chevron} rotate="180deg" />
         </button>
       </AnimatePresence>
+
+      {isVisible && <div className="visually-hidden">{prerenderedAssets}</div>}
     </div>
   )
 }

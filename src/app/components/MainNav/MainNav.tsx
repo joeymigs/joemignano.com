@@ -3,6 +3,7 @@
 import type { Variants } from "@/types/animation"
 
 import { socials } from "@/data/socials"
+import { mainNav } from "@/data/mainNav"
 
 import { useState, useRef, useEffect } from "react"
 
@@ -25,6 +26,7 @@ import css from './MainNav.module.css'
 import typo from "@/css/typography/Typography.module.css"
 import cx from 'classnames'
 import IconLinks from "../IconLinks"
+import SiteHeaderButton from "../SiteHeader/SiteHeaderButton"
 
 const wrapVariants: Variants = {
   open: {
@@ -65,9 +67,7 @@ const linkVariants: Variants = {
   },
 }
 
-type MainNavProps = { className?: string }
-
-export default function MainNav({ className = '' }: MainNavProps) {
+export default function MainNav() {
   const menuRef = useRef(null)
   const [open, setOpen] = useState(false)
   const lenis = useLenis()
@@ -89,21 +89,28 @@ export default function MainNav({ className = '' }: MainNavProps) {
   }, [open, lenis])
 
   return (
-    <div className={cx(className, css.Wrap, {[css.Open]: open})} aria-label="Main Navigation">
-      <button 
+    <div className={cx(css.Wrap, {[css.Open]: open})} aria-label="Main Navigation">
+      <SiteHeaderButton
+        align="right"
+        id="menu-button"
         className={css.Trigger}
         onClick={() => setOpen(!open)}
-        aria-expanded={open}
-        aria-controls="main-menu"
-        aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+        aria={{
+          "aria-haspopup": "true",
+          "aria-expanded": String(open),
+          "aria-controls": "main-menu",
+          "aria-label": open ? 'Close navigation menu' : 'Open navigation menu'
+        }}
       >
         <Icon svg={Hamburger} className={css.Hamburger} />
         <Icon svg={X} className={css.X} />
-      </button>
+      </SiteHeaderButton>
       
       <motion.nav
-        className={css.MenuWrap}
         role="menu"
+        id="main-menu"
+        aria-labelledby="menu-button"
+        className={css.MenuWrap}
         ref={menuRef}
         variants={wrapVariants}
         initial="closed"
@@ -115,42 +122,18 @@ export default function MainNav({ className = '' }: MainNavProps) {
           initial="closed"
           animate={open ? "open" : "closed"}
         >
-          <motion.li
-            data-id="home"
-            onClick={handleLinkClick}
-            variants={linkVariants}
-          >
-            <Link className={cx(css.Link, typo.Hover)} href="/">
-              <span className={typo.Link}>Home</span>
-            </Link>
-          </motion.li>
-          <motion.li
-            data-id="work"
-            onClick={handleLinkClick}
-            variants={linkVariants}
-          >
-            <Link className={cx(css.Link, typo.Hover)} href="/#work">
-              <span className={typo.Link}>Work</span>
-            </Link>
-          </motion.li>
-          <motion.li
-            data-id="about"
-            onClick={handleLinkClick}
-            variants={linkVariants}
-          >
-            <Link className={cx(css.Link, typo.Hover)} href="/about">
-              <span className={typo.Link}>About</span>
-            </Link>
-          </motion.li>
-          <motion.li
-            data-id="contact"
-            onClick={handleLinkClick}
-            variants={linkVariants}
-          >
-            <Link className={cx(css.Link, typo.Hover)} href="#contact">
-              <span className={typo.Link}>Contact</span>
-            </Link>
-          </motion.li>
+          {mainNav.map(({ id, label, url }) => (
+            <motion.li
+              key={id}
+              data-id={id}
+              onClick={handleLinkClick}
+              variants={linkVariants}
+            >
+              <Link href={url} className={cx(css.Link, typo.Hover)}>
+                <span className={typo.Link}>{label}</span>
+              </Link>
+            </motion.li>
+          ))}
 
           <motion.li data-id="connect-button">
             <Button variant="catchy" className={css.Button} href="#contact" inline>

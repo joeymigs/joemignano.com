@@ -91,7 +91,7 @@ export default function OtherWorkTeasers({ teasers = [] }: OtherWorkTeasersProps
               <Image src={image} className={css.Image} alt={imageAlt} />
               <div className={css.Text}>
                 <h3 className={typo.DisplayS}>{title}</h3>
-                <p className={cx(css.Desc, typo.BodyM, typo.Pretty)}>{desc}</p>
+                <p className={cx(css.Desc, typo.BodyM, typo.Balance)}>{desc}</p>
               </div>
               <div className={css.Cta}>
                 <span>
