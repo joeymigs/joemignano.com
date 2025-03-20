@@ -148,7 +148,7 @@
 }
 @media( width >= 960px ) {
   .Trigger {
-    display: none;
+    display: none !important;
   }
   .MenuWrap {
     --font-weight: var(--font-weight-medium);

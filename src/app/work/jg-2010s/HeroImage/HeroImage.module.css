@@ -13,29 +13,33 @@
 
 @media( width < 480px ) {
   .Before {
+    --width: 125%;
+
     top: -5%;
     left: -33.33%;
-    width: 125%;
     rotate: -3.33deg;
   }
   .After {
+    --width: 150%;
+
     top: 12.5%;
     right: -66.67%;
-    width: 150%;
     rotate: 3.33deg;
   }
 }
 @media( width >= 480px ) {
   .Before {
+    --width: 120%;
+
     top: -2.5%;
     left: -33.33%;
-    width: 120%;
     rotate: -3.33deg;
   }
   .After {
+    --width: 140%;
+
     top: 17.5%;
     right: -61.8%;
-    width: 140%;
     rotate: 3.33deg;
   }
 }
@@ -44,14 +48,16 @@
     margin-bottom: -1rem;
   }
   .Before {
+    --width: 112.5%;
+
     top: -2.5%;
     left: -20%;
-    width: 112.5%;
   }
   .After {
+    --width: 125%;
+
     top: 17.5%;
     right: -38.2%;
-    width: 125%;
   }
 }
 @media( width >= 720px ) {
@@ -60,12 +66,14 @@
     margin-bottom: 0;
   }
   .Before {
+    --width: 100%;
+
     left: -12.5%;
-    width: 100%;
   }
   .After {
+    --width: 107.5%;
+
     right: -25%;
-    width: 107.5%;
   }
 }
 @media( width >= 800px ) {
@@ -75,12 +83,15 @@
     aspect-ratio: 9 / 5;
   }
   .Before {
+    --width: 75%;
+
     top: -1.5rem;
     left: var(--position-x);
-    width: 75%;
     rotate: -2.5deg;
   }
   .After {
+    --width: 80%;
+    
     top: 3rem;
     right: var(--position-x);
     width: 80%;
@@ -108,10 +119,10 @@
     margin-bottom: 1.5rem;
   }
   .Before {
-    width: 63.3%;
+    --width: 63.3%;
   }
   .After {
-    width: 66.67%;
+    --width: 66.67%;
   }
 }
 @media( width >= 1400px ) {
