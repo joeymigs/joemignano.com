@@ -1,6 +1,8 @@
 import type { PropsWithChildren } from "react"
 import type { Metadata } from "next"
 
+import { Analytics } from "@vercel/analytics/react"
+
 import { Archivo } from 'next/font/google'
 
 import "@/css/reset.css"
@@ -55,6 +57,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <SiteMain>{children}</SiteMain>
           <SiteFooter />
         </ReactLenisWrap>
+        <Analytics />
       </body>
     </html>
   )
