@@ -14,7 +14,7 @@ import feature5Img from '/public/images/work/bookfinder/design-feature-5.jpg'
 import Button from "@/components/Button"
 import Icon from "@/components/Icon"
 import Arrow from "@/assets/icons/Arrow.svg"
-// import GitHub from "@/assets/icons/GitHub.svg"
+import GitHub from "@/assets/icons/GitHub.svg"
 
 import css from "@/work/bookfinder/CaseStudy.module.css"
 import typo from "@/css/typography/Typography.module.css"
@@ -73,27 +73,27 @@ export const summary: CaseStudySummary = {
   side: (
     <CaseStudySummaryCta>
       <Button
+        href="mailto:joeymigs@gmail.com?subject=Request for Bookfinder app demo link"
+        target="_blank"
+        rel="noopener noreferrer"
         variant="cta"
-        disabled
         stretch
-        style={{'--_bg-color': '#8ebddf'} as React.CSSProperties}
       >
-        Try a demo <Icon svg={Arrow} rotate="225deg" />
+        Request a demo link <Icon svg={Arrow} rotate="225deg" />
       </Button>
-      <div style={{display: 'flex', alignItems: 'center', gap: 'var(--space-75)'}}>
-        {/* <Icon svg={GitHub} style={{"--icon-size": '24px'} as React.CSSProperties} /> */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-75)'}} >
+        <Icon svg={GitHub} style={{"--icon-size": '24px'} as React.CSSProperties} />
         <span className={cx(typo.BodyS, typo.Prose)}>
-          {/* <b>GitHub repo</b> available upon <a href="mailto:joeymigs@gmail.com">request</a>. */}
-          <span
-            style={{
-              display: 'inline-block',
-              width: 'fit-content',
-              transform: 'scale(-1.25, 1.25)',
-              marginRight: '0.5em',
-            }}>📢</span>
-          <em style={{fontWeight: 'var(--font-weight-medium)'}}>Coming soon!</em>
+          <b>GitHub repo</b> also available upon <a
+            href="mailto:joeymigs@gmail.com?subject=Request for Bookfinder app repo/code sample"
+            target="_blank"
+            rel="noopener noreferrer"
+          >request</a>.
         </span>
       </div>
+      <small style={{ color: 'var(--text-disabled)', marginTop: 'calc(var(--space-100) * -1)' }}>
+        Public demo coming soon!
+      </small>
     </CaseStudySummaryCta>
   ),
 }

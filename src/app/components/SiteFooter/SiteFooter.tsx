@@ -28,7 +28,12 @@ export default function SiteFooter() {
       <motion.div className={css.BgCircle} style={{ opacity, scale, y }} />
       <motion.div className={css.Cta} style={{ opacity, scale, y }}>
         <h2 className={cx(css.GetInTouch, typo.DisplayXl)}>
-          <a className={typo.Underline} href="mailto:joe@joemignano.com" rel="noopener noreferrer">
+          <a
+            className={typo.Underline}
+            href="mailto:joe@joemignano.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Get in Touch
           </a>
           <Icon className={css.Arrow} rotate="270deg" svg={Arrow} />

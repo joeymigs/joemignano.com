@@ -154,6 +154,8 @@ export default function MainNav() {
               href="mailto:joe@joemignano.com"
               className={typo.Underline}
               variants={linkVariants}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               joe@joemignano.com
             </motion.a>
