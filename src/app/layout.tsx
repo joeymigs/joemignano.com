@@ -2,6 +2,7 @@ import type { PropsWithChildren } from "react"
 import type { Metadata } from "next"
 
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import { Archivo } from 'next/font/google'
 
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <SiteMain>{children}</SiteMain>
           <SiteFooter />
         </ReactLenisWrap>
+        <SpeedInsights />
         <Analytics />
       </body>
     </html>
