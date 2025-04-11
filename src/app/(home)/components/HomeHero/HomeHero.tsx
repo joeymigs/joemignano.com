@@ -11,6 +11,7 @@ import HomeHeroArrow from './HomeHeroArrow'
 import css from './HomeHero.module.css'
 import typo from '@/css/typography/Typography.module.css'
 import cx from 'classnames'
+import { workAvailability } from '@/data/workAvailability'
 
 export default function HomeHero() {
   return (
@@ -19,7 +20,7 @@ export default function HomeHero() {
       <HomeHeroH1 className={cx(typo.DisplayXl, css.Title)} />
       <HomeHeroH2 className={cx(typo.DisplayL, css.Subtitle)} />
       <HomeHeroTagline />
-      <HomeHeroAvailability />
+      {workAvailability.status === 'available' && <HomeHeroAvailability {...workAvailability} />}
       <HomeHeroArrow />
     </section>
   )
