@@ -3,6 +3,16 @@ import type { RuleSetRule } from "webpack"
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+
+  async redirects() {
+    return [
+      {
+        source: '/work',
+        destination: '/',
+        permanent: false,
+      },
+    ];
+  },
   
   // SVGR config (converts *.svg imports to React components)
   webpack(config) {
