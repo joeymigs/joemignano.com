@@ -84,10 +84,15 @@
 }
 
 .Socials {
-  margin-top: var(--space-300);
-  padding-top: var(--space-150);
+  margin-top: var(--space-400);
+  padding-top: var(--space-200);
   border-top: solid 1px hsl(from var(--surface-bg-primary) h s l / 0.33);
   width: fit-content;
+
+  & [title="GitHub"] {
+    --icon-size: var(--space-300);
+    width: var(--space-400);
+  }
 }
 
 @media( width >= 960px ) {

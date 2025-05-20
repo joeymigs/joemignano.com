@@ -87,6 +87,11 @@
   .Icons {
     --icon-size: 2rem;
     --icon-gap: var(--space-25);
+
+    & [title="GitHub"] {
+      --icon-size: 1.5rem;
+      width: 2rem;
+    }
   }
 }
 .Colophon {

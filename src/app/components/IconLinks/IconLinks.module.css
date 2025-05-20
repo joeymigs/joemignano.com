@@ -12,6 +12,9 @@
   & a {
     --icon-size: var(--_icon-size);
 
+    display: flex;
+    justify-content: center;
+
     &:hover {
       --icon-color: var(--surface-link-inverse);
     }

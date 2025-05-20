@@ -143,24 +143,6 @@ export default function MainNav() {
         </motion.ul>
 
         <div data-id="mobile-footer" className={css.MobileFooter}>
-          <motion.div
-            className={css.Email}
-            variants={menuVariants}
-            initial="closed"
-            animate={open ? "open" : "closed"}
-          >
-            <motion.span variants={linkVariants}>Email Address:</motion.span>
-            <motion.a
-              href="mailto:joe@joemignano.com"
-              className={typo.Underline}
-              variants={linkVariants}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              joe@joemignano.com
-            </motion.a>
-          </motion.div>
-          
           <IconLinks
             links={socials}
             className={css.Socials}

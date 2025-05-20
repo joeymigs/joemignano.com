@@ -43,18 +43,15 @@
 
   margin: 0 var(--layout-viewport-padding) var(--layout-viewport-padding) 0;
 }
-.Email {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-50);
 
-  & span {
-    font-weight: var(--font-weight-medium);
-    letter-spacing: var(--letter-spacing--02);
-  }
-}
 .Socials {
   --icon-size: var(--space-500);
+  --icon-gap: var(--space-100);
+
+  & [title="GitHub"] {
+    --icon-size: var(--space-400);
+    width: var(--space-500);
+  }
 }
 
 @media( width < 960px ) {
