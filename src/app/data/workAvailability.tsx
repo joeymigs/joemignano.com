@@ -6,6 +6,6 @@ export type WorkAvailability = {
 
 export const workAvailability: WorkAvailability = {
   status: 'available',
-  availableFromDate: 'June ‘25',
+  availableFromDate: 'July ‘25',
   statusMessage: 'Available for work',
 }
